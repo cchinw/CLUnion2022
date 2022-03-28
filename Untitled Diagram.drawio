@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-03-28T22:41:41.557Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.83 Safari/537.36" etag="lDkTWipgvJu4kobSLc5q" version="17.2.4" type="github">
+<mxfile host="app.diagrams.net" modified="2022-03-28T22:49:51.843Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.83 Safari/537.36" etag="GItc-CWeDlltNfBnTPVq" version="17.2.4" type="github">
   <diagram id="R2lEEEUBdFMjLlhIrx00" name="Page-1">
     <mxGraphModel dx="2857" dy="2082" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0" extFonts="Permanent Marker^https://fonts.googleapis.com/css?family=Permanent+Marker">
       <root>
@@ -590,7 +590,7 @@
         <mxCell id="suhASBV4rH8vaRm9QiRD-402" value="Registry" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;sketch=0;gradientColor=#FFFFFF;" vertex="1" parent="1">
           <mxGeometry x="-2260" y="-10" width="215" height="190" as="geometry" />
         </mxCell>
-        <mxCell id="suhASBV4rH8vaRm9QiRD-403" value="_id: ItemId&#xa;greeting: Strin&#xa;list: itemId(ref=ItemList)&#xa;image: String&#xa;title: String&#xa;description: String&#xa;quantityLeft: ItemId(ref= Purchased)&#xa;receipt: Item(ref=receipt)" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;sketch=0;" vertex="1" parent="suhASBV4rH8vaRm9QiRD-402">
+        <mxCell id="suhASBV4rH8vaRm9QiRD-403" value="_id: ItemId&#xa;list: itemId(ref=ItemList)&#xa;image: String&#xa;title: String&#xa;description: String&#xa;quantityLeft: ItemId(ref= Purchased)&#xa;receipt: Item(ref=receipt)" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;sketch=0;" vertex="1" parent="suhASBV4rH8vaRm9QiRD-402">
           <mxGeometry y="30" width="215" height="160" as="geometry" />
         </mxCell>
         <mxCell id="suhASBV4rH8vaRm9QiRD-406" value="ItemList" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;sketch=0;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
