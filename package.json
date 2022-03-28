@@ -1,0 +1,24 @@
+{
+  "name": "clunion2022",
+  "version": "1.0.0",
+  "description": "### By Chinwendu Ukoha",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cchinw/CLUnion2022.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cchinw/CLUnion2022/issues"
+  },
+  "homepage": "https://github.com/cchinw/CLUnion2022#readme",
+  "dependencies": {
+    "mongoose": "^6.2.8",
+    "react-router-dom": "^6.2.2"
+  }
+}
