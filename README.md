@@ -32,3 +32,5 @@ Following this first phase, details would be added to build the rest of the page
 [Nest Menu Items in the Nav Bar Using React](https://www.youtube.com/watch?app=desktop&v=IF6k0uZuypA)
 
 [Allow Users Upload Images](https://codeburst.io/react-image-upload-with-kittens-cc96430eaece)
+
+[Countdown Timer in React](https://www.npmjs.com/package/react-date-countdown-timer)
