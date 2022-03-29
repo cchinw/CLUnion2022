@@ -13,3 +13,5 @@ const Checkout = new Schema(
   },
   { timestamps: true }
 )
+
+module.exports = Checkout
