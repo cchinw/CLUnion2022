@@ -4,9 +4,11 @@ const router = Router()
 
 router.get('/registry', controllers.getRegistry)
 
-router.get('/cart', controllers.getCart)
+router.get('/registry/:id', controllers.getRegistryCategory)
 
-router.get('/item/:id', controllers.getItemById)
+router.post('/registry/:id/checkout', controllers.checkoutItems)
+
+// router.get('/item/:id', controllers.getItemById)
 
 // router.get('/cart', controllers.viewCart)
 

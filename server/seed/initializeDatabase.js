@@ -78,7 +78,7 @@ const main = async () => {
     greeting:
       'Your presence, thoughts, well wishes, and prayers for our wedding and marriage is appreciated above all. If you`ll like to give us a gift, we are grateful and appreciate your generosity. Love, C&L',
     title: 'Home Decor Registry',
-    category: HomeDecorRegistry._id
+    category: HomeDecorCategory._id
   })
   await HomeDecorRegistry.save()
 
@@ -115,7 +115,7 @@ const main = async () => {
   const KitchenRegistry = await new Registry({
     greeting:
       'Your presence, thoughts, well wishes, and prayers for our wedding and marriage is appreciated above all. If you`ll like to give us a gift, we are grateful and appreciate your generosity. Love, C&L',
-    title: 'Home Decor Registry',
+    title: 'Kitchen Registry',
     category: KitchenCategory._id
   })
   await KitchenRegistry.save()
