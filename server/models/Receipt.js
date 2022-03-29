@@ -2,13 +2,13 @@ const { Schema } = require('mongoose')
 
 const Receipt = new Schema(
   {
-    items: { type: Schema.Types.ObjectId, ref: 'Checkout', required: true },
-    totalCost: { type: Schema.Types.ObjectId, ref: 'Checkout', required: true },
+    items: [{ type: Schema.Types.ObjectId, ref: 'Checkout', required: true }],
+    totalCost: { type: Number, required: true },
     date: { type: Date, required: true },
-    purchaseStatus: { type: Boolean, required: true },
+    purchaseStatus: { type: Boolean, required: false },
     purchasedFrom: {
       type: Schema.Types.ObjectId,
-      ref: 'Item',
+      ref: 'Registry',
       required: true
     }
   },

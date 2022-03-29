@@ -11,7 +11,7 @@ const main = async () => {
     description:
       'Straight from the Middle Ages to your modern home, our Emmy floor mirror reimagines the classic Tudor arch. Also called a four-centered arch, this elegant shape adds subtle architectural interest to the floor mirror`s clean-lined frame of brass-finished iron. Grandly scaled, our exclusive Emmy brass floor mirror leans against the wall to create room-defining drama as well as add light-reflecting brightness to any space.',
     price: 849,
-    quantityRemaining: 1
+    quantityLeft: 1
   })
   await item1.save()
 
@@ -19,7 +19,7 @@ const main = async () => {
     greeting:
       'Your presence, thoughts, well wishes, and prayers for our wedding and marriage is appreciated above all. If you`ll like to give us a gift, we are grateful and appreciate your generosity. Love, C&L',
     title: 'Wish List',
-    quantityLeft: [item1._id]
+    items: [item1._id]
   })
   await weddingRegistry.save()
 

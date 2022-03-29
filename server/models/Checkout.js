@@ -10,6 +10,9 @@ const Checkout = new Schema(
     name: { type: String, required: true },
     address: { type: String, required: true },
     phoneNumber: { type: Number, required: true },
+    purchasedFrom: [
+      { type: Schema.Types.ObjectId, ref: 'Registry', required: true }
+    ],
     purchasedStatus: { type: Boolean, required: true }
   },
   { timestamps: true }
