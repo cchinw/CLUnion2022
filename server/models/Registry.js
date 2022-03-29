@@ -4,14 +4,9 @@ const Registry = new Schema(
   {
     greeting: { type: String, required: true },
     title: { type: String, required: true },
-    items: [{ type: Schema.Types.ObjectId, ref: 'Item', required: true }]
-    // cart: [{ type: Schema.Types.ObjectId, ref: 'Cart', required: true }],
-    // quantityLeft: {
-    //   type: Schema.Types.ObjectId,
-    //   ref: 'Checkout',
-    //   required: true
-    // }
-    //   receipt: [{ type: Schema.Types.ObjectId, ref: 'Receipt', required: false }]
+    category: { type: Schema.Types.ObjectId, ref: 'Category', required: true },
+    itemLeft: { type: Schema.Types.ObjectId, ref: 'Checkout', required: true },
+    receipt: { type: Schema.Types.ObjectId, ref: 'Receipt', required: true }
   },
   { timestamps: true }
 )
