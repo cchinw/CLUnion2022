@@ -2,13 +2,14 @@ const { Schema } = require('mongoose')
 
 const Checkout = new Schema(
   {
-    image: { type: String, required: true },
-    title: { type: String, required: true },
-    description: { type: String, required: true },
-    itemPrice: { type: Number, required: true },
+    items: [{ type: Schema.Types.ObjectId, ref: 'Cart', required: true }],
     totalcost: { type: Number, required: true },
-    details: { type: String, required: true },
-    shipping: { type: String, required: true }
+    email: { type: String, required: true },
+    giftMessage: { type: String, required: true },
+    paymentDetails: { type: Number, required: true },
+    name: { type: String, required: true },
+    address: { type: String, required: true },
+    phoneNumber: { type: Number, required: true }
   },
   { timestamps: true }
 )
