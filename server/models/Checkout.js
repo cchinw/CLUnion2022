@@ -9,7 +9,8 @@ const Checkout = new Schema(
     paymentDetails: { type: Number, required: true },
     name: { type: String, required: true },
     address: { type: String, required: true },
-    phoneNumber: { type: Number, required: true }
+    phoneNumber: { type: Number, required: true },
+    purchasedStatus: { type: Boolean, required: true }
   },
   { timestamps: true }
 )
