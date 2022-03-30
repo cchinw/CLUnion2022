@@ -4,7 +4,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import Checkout from './Checkout'
 
-const Checkout = ({regId}) => {
+const CheckoutHandler = ({regId}) => {
 
   let navigate = useNavigate()
 
@@ -58,9 +58,23 @@ const Checkout = ({regId}) => {
     setInput(e.target.value)
   }
 
+  const postCheckout = () => {
+    const data = {
+      giftMessage: giftMessage,
+      email: email,
+      paymentDetails: paymentDetails,
+      name: name,
+      address: address,
+      phoneNumber: phoneNumber,
+      category: regId,
+      reservedStatus: reservedStatus
+    }
+    console.log(data)
+  }
+
   return (
-    <div className="checkout">
-      
+    <div className="checkoutHandler">
+      <Checkout />
     </div>
   )
 }
