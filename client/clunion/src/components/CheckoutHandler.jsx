@@ -70,11 +70,21 @@ const CheckoutHandler = ({regId}) => {
       reservedStatus: reservedStatus
     }
     console.log(data)
+    const saveCheckout = async () => {
+      await axios.post(`http://localhost:3001/api/checkout/regId`, data).then(function (response) {
+        console.log(response)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    }
+    saveCheckout()
+    navigate(location.pathname)
   }
 
   return (
     <div className="checkoutHandler">
-      <Checkout />
+      <Checkout postCheckout={postCheckout}/>
     </div>
   )
 }
