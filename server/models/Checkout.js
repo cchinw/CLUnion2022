@@ -2,7 +2,6 @@ const { Schema } = require('mongoose')
 
 const Checkout = new Schema(
   {
-    totalcost: { type: Number, required: true },
     giftMessage: { type: String, required: false },
     email: { type: String, required: true },
     paymentDetails: { type: Number, required: true },

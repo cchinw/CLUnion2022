@@ -6,7 +6,7 @@ const Item = new Schema(
     title: { type: String, required: true },
     description: { type: String, required: true },
     price: { type: Number, required: true },
-    quantityLeft: { type: Number, required: true }
+    quantityNeeded: { type: Number, required: false }
   },
   { timestamps: true }
 )

@@ -91,7 +91,22 @@ const getItemsByCategoryId = async (req, res) => {
     return res.status(500).send(error.message)
   }
 }
-
+//This works!!!
+const createCheckout = async (req, res) => {
+  try {
+    const registry = await Registry.findById(req.params.regid)
+    console.log(registry)
+    if (registry.itemsLeft > 0) {
+      registry.itemsLeft = registry.itemsLeft - 1
+      registry.save()
+      res.json(registry)
+    } else {
+      res.json({ msg: 'This gift has already been purchased' })
+    }
+  } catch (error) {
+    return res.status(500).send(error.message)
+  }
+}
 module.exports = {
   getRegistry,
   getRegistryById,
@@ -100,5 +115,6 @@ module.exports = {
   getReceipts,
   getReceiptbyId,
   getItemById,
-  getItemsByCategoryId
+  getItemsByCategoryId,
+  createCheckout
 }

@@ -18,4 +18,6 @@ router.get('/receipt/:rId', controllers.getReceiptbyId)
 
 router.get('/item/:id', controllers.getItemById)
 
+router.get('/checkout/:regid', controllers.createCheckout)
+
 module.exports = router
