@@ -29,7 +29,7 @@ const main = async () => {
   await itemFurniture2.save()
 
   const furnitureCategory = await new Category({
-    title: 'Furniture',
+    title: 'Furniture Category',
     items: [itemFurniture1._id, itemFurniture2._id]
   })
   await furnitureCategory.save()
@@ -69,7 +69,7 @@ const main = async () => {
   await itemHomeDecor2.save()
 
   const HomeDecorCategory = await new Category({
-    title: 'Furniture',
+    title: 'Home Decor Category',
     items: [itemHomeDecor1._id, itemHomeDecor2._id]
   })
   await HomeDecorCategory.save()
@@ -107,7 +107,7 @@ const main = async () => {
   await KitchenItem2.save()
 
   const KitchenCategory = await new Category({
-    title: 'Furniture',
+    title: 'Kitchen Category',
     items: [KitchenItem1._id, KitchenItem2._id]
   })
   await KitchenCategory.save()

@@ -6,6 +6,7 @@ const {
   Registry
 } = require('../models/index')
 
+// This works
 const getRegistry = async (req, res) => {
   try {
     const registry = await Registry.find()
@@ -14,52 +15,90 @@ const getRegistry = async (req, res) => {
     return res.status(500).send(error.message)
   }
 }
-
-const getRegistryCategory = async (req, res) => {
+// This works
+const getRegistryById = async (req, res) => {
   try {
-    const category = await Category.find()
-    return res.status(201).send(category)
+    const registry = await Registry.findById(req.params.regid)
+    return res.status(201).send(registry)
+  } catch (error) {
+    console.log(error.message)
+    return res.status(500).send(error.message)
+  }
+}
+// This works
+const createReceipt = async (req, res) => {
+  try {
+    const registryId = req.body.registry
+    // console.log('registryId' + registryId)
+    const registry = await Registry.findById(registryId)
+    // console.log('registry' + registry)
+    const receipt = await new Receipt(req.body)
+    await Registry.findByIdAndUpdate(registryId, {
+      receipts: [receipt._id]
+    })
+    await receipt.save()
+    return res.status(201).json(receipt)
+  } catch (error) {
+    return res.status(500).json({ error: error.message })
+  }
+}
+// This works
+const getReceipts = async (req, res) => {
+  try {
+    const receipt = await Receipt.find()
+    return res.status(201).send(receipt)
+  } catch (error) {
+    return res.status(500).send(error.message)
+  }
+}
+//This works
+const getReceiptbyId = async (req, res) => {
+  try {
+    const receipt = await Receipt.findById(req.params.rId)
+    return res.status(201).send(receipt)
+  } catch (error) {
+    return res.status(500).send(error.message)
+  }
+}
+//This Works
+const getCategoryById = async (req, res) => {
+  try {
+    const category = await Category.findById(req.params.id)
+    return res.status(201).json(category)
+  } catch (error) {
+    return res.status(500).send(error.message)
+  }
+}
+// This works!!
+const getItemById = async (req, res) => {
+  try {
+    const item = await Item.findById(req.params.id)
+    return res.status(201).send(item)
+  } catch (error) {
+    return res.status(500).send(error.message)
+  }
+}
+// This works!
+const getItemsByCategoryId = async (req, res) => {
+  try {
+    const category = await Category.findById(req.params.id)
+    let item = []
+    for await (const itemId of category.items) {
+      item.push(await Item.findById(itemId))
+    }
+    return res.status(201).json(item)
   } catch (error) {
     return res.status(500).send(error.message)
   }
 }
 
-const checkoutItems = async (req, res) => {
-  try {
-    const registryId = req.body.registry
-    const registry = await Registry.findById(registryId)
-    const checkout = await new Checkout(req.body)
-    await Registry.findByIdAndUpdate(registryId, {
-      checkout: [...registry.checkout, checkout._id]
-    })
-    await checkout.save()
-    return res.status(201).json(checkout)
-  } catch (error) {
-    return res.status(500).json({ error: error.message })
-  }
-}
-
-// const getItemById = async (req, res) => {
-//   try {
-//     const registryItem = await Item.findById(req.params.id)
-//     return res.status(201).send(registryItem)
-//   } catch (error) {
-//     return res.status(500).send(error.message)
-//   }
-// }
-
-// const viewCart = async (req, res) => {
-//   try {
-//     const cartItem = await Cart.findById(req.params.id)
-//     return res.status(201).send(cartItem)
-//   } catch (error) {
-//     return res.status(500).send(error.message)
-//   }
-// }
-
 module.exports = {
   getRegistry,
-  getRegistryCategory,
-  checkoutItems
-  // viewCart
+  getRegistryById,
+  getCategoryById,
+  createReceipt,
+  getReceipts,
+  getReceiptbyId,
+  getItemById,
+  getItemsByCategoryId
 }

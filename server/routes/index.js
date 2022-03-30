@@ -4,20 +4,18 @@ const router = Router()
 
 router.get('/registry', controllers.getRegistry)
 
-router.get('/registry/:id', controllers.getRegistryCategory)
+router.get('/registry/:regid', controllers.getRegistryById)
 
-router.post('/registry/:id/checkout', controllers.checkoutItems)
+router.get('/category/:id', controllers.getCategoryById)
 
-// router.get('/item/:id', controllers.getItemById)
+router.get('/category/:id/items', controllers.getItemsByCategoryId)
 
-// router.get('/cart', controllers.viewCart)
+router.post('/receipt', controllers.createReceipt)
 
-// // router.post('/registry/:id/checkout', controllers.Checkout)
+router.get('/receipt/', controllers.getReceipts)
 
-// router.get('/receipt/:rId', controllers.getReceiptById)
+router.get('/receipt/:rId', controllers.getReceiptbyId)
 
-// router.get('/guestbook', controllers.ViewGuestbook)
-
-// // router.post('/guestbook/form', controllers.signGuestBook)
+router.get('/item/:id', controllers.getItemById)
 
 module.exports = router
