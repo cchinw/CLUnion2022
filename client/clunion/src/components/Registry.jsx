@@ -1,7 +1,7 @@
 import React from "react";
 
 const Registry = () => {
-  return
+  return (<li className="registry"></li>)
 }
 
 export default Registry

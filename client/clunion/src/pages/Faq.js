@@ -1,5 +1,7 @@
+import React from 'react'
+
 const Faq = () => {
-  return <div></div>
+  return <li className="faq"></li>
 }
 
 export default Faq

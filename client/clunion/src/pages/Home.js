@@ -1,12 +1,19 @@
 import React from 'react'
+// import axios from 'axios'
+// import { useEffect, useState } from 'react'
 import '../style/App.css'
 import HomeImage from '../highlights/HomeImage.png'
-import DateCountdown from 'react-date-countdown-timer'
+// import DateCountdown from 'react-date-countdown-timer'
 
 const Home = () => {
+  // const BASE_URL = 'http://localhost:3001/api'
+
+  // useEffect(() => {
+
+  // },[])
   return (
-    <div className="home">
-      <img src={HomeImage} alt="mainCoupleImage" />
+    <li className="home">
+      <img className="homeImage" src={HomeImage} alt="mainCoupleImage" />
       <h1>Welcome to #CLUnion2022</h1>
       <h3>
         Here you would receive any and all updates about Wendy and Lekan's
@@ -19,13 +26,13 @@ const Home = () => {
       </div>
       <div>
         <h4 className="countdown">
-          <DateCountdown
+          {/* <DateCountdown
             dateTo="December 16, 2022 00:00:00 GMT+01:00"
             callback={() => alert('The D-day is Here!!!')}
-          />
+          /> */}
         </h4>
       </div>
-    </div>
+    </li>
   )
 }
 
