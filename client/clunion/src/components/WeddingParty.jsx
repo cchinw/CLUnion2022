@@ -1,7 +1,7 @@
 import React from "react";
 
 const WeddingParty = () => {
-  return (<li className="weddingParty"></li>)
+  return (<div className="weddingParty"></div>)
 }
 
 export default WeddingParty

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import React from "react"
 import '../style/Nav.css'
 import OurStory from './OurStory'
@@ -12,16 +12,15 @@ const Nav = () => {
     <header>
       <nav className='nav'>
         <ul className='navLinks'>
-          {/* {props.children} */}
-          <Link to='/'>Home</Link>
-          <Link to='/faq'>FAQs</Link>
-          <Link to='/guestbook/:gbid'>Guest Signout</Link>
-          <Link to='/ourstory'>Our Story</Link>
-          <Link to='/photos'>Photos</Link>
-          <Link to='/todo'>To Do in Lagos</Link>
-          <Link to='/travel'>Travel Arrangements</Link>
-          <Link to='/weddingparty'>Wedding Party</Link>
-          <Link to='/registry'>Registry</Link>
+          <li><NavLink exact activeClassName="homeLink" to='/'>Home</NavLink></li>
+          <li><NavLink activeClassName="faqLink" to='/faq'>FAQs</NavLink></li>
+          <li><NavLink activeClassName="guestbookLink" to='/guestbook/:gbid'>Guest Signout</NavLink></li>
+          <li><NavLink activeClassName="ourStoryLink" to='/ourstory'>Our Story</NavLink></li>
+          <li><NavLink activeClassName="photosLink" to='/photos'>Photos</NavLink></li>
+          <li><NavLink activeClassName="toDoLink" to='/todo'>To Do in Lagos</NavLink></li>
+          <li><NavLink activeClassName="travelLink" to='/travel'>Travel Arrangements</NavLink></li>
+          <li><NavLink activeClassName="weddingPartyLink" to='/weddingparty'>Wedding Party</NavLink></li>
+          <li><NavLink activeClassName="registryLink" to='/registry'>Registry</NavLink></li>
         </ul>
       </nav>
     </header>

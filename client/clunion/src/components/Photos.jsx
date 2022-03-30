@@ -1,7 +1,7 @@
 import React from "react";
 
 const Photos = () => {
-  return (<li className="photos"></li>)
+  return (<div className="photos"></div>)
 }
 
 export default Photos

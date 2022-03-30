@@ -1,7 +1,7 @@
 import React from "react";
 
 const Travel = () => {
-  return (<li className="travel"></li>)
+  return (<div className="travel"></div>)
 }
 
 export default Travel

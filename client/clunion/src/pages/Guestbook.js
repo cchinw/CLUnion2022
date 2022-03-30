@@ -2,7 +2,7 @@ import React from 'react'
 import '../style/App.css'
 
 const Guestbook = () => {
-  return <li className="guestbook"></li>
+  return <div className="guestbook"></div>
 }
 
 export default Guestbook

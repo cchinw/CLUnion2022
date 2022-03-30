@@ -12,7 +12,7 @@ const Home = () => {
 
   // },[])
   return (
-    <li className="home">
+    <div className="home">
       <img className="homeImage" src={HomeImage} alt="mainCoupleImage" />
       <h1>Welcome to #CLUnion2022</h1>
       <h3>
@@ -32,7 +32,7 @@ const Home = () => {
           /> */}
         </h4>
       </div>
-    </li>
+    </div>
   )
 }
 

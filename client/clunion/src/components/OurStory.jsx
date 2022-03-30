@@ -1,7 +1,7 @@
 import React from "react";
 
 const OurStory = () => {
-  return (<li className="ourStory"></li>)
+  return (<div className="ourStory"></div>)
 }
 
 export default OurStory
