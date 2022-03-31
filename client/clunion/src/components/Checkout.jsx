@@ -1,6 +1,6 @@
 import React from "react"
 import { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { useLocation } from "react-router-dom"
 import axios from "axios"
 
@@ -8,6 +8,7 @@ const Checkout = (props) => {
 
   const location = useLocation()
   let navigate = useNavigate()
+  let { regId } = useParams()
 
   const [giftMessage, setGiftMessage] = useState('')
   const [email, setEmail] = useState('')
@@ -60,9 +61,9 @@ const Checkout = (props) => {
       category: category,
       reservedStatus: reservedStatus
     }
-    console.log(data + 'CHECKOUT DATA')
+    console.log(data, 'CHECKOUT DATA')
     const saveCheckout = async () => {
-      await axios.post(`http://localhost:3001/api/checkout/:regId`, data).then(function (response) {
+      await axios.post(`http://localhost:3001/api/checkout/${regId}`, data).then(function (response) {
         console.log(response)
       }).catch(function (error) {
         console.log(error)

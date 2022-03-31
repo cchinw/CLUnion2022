@@ -5,7 +5,7 @@ import Nav from '../src/components/Nav'
 import Faq from './pages/Faq'
 import Home from '../src/pages/Home'
 import Checkout from './components/Checkout'
-import RegistryPage from './pages/RegistryPage'
+import CategoryPage from './pages/CategoryPage'
 import '../src/style/App.css'
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
         <Routes>
           <Route index element={<Home />} />
           <Route path="/faq" element={<Faq />} />
-          <Route path="/registry" element={<RegistryPage />} />
+          <Route path="/category/:id" element={<CategoryPage />} />
           <Route path="/checkout/:regid" element={<Checkout />} />
         </Routes>
       </main>

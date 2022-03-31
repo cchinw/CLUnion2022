@@ -1,14 +1,29 @@
+import axios from 'axios'
 import React from 'react'
-import Item from './Item'
+import { useState, useEffect } from 'react'
+import Registry from './Registry'
 
-const Category = ({ itemCategory }) => {
-  
+
+const Category = (props) => {
+  const [category, setCategory] = useState([])
+
+  useEffect( async () => {
+ await axios.get(`${props.BASE_URL}/category/${props.id}`)
+  }, [])
+
   return (
-    <div className='ClassGrid'>
-      <h3>{itemCategory.name}</h3>
-      {props.items.map((item) => {
-        return <Item title={item.title} items={item.items}/>
-      })}
+    <div className='selectCategory'>
+      <button>
+        {category.map((cat) => (
+          <Registry
+            cat={cat}
+          />
+        ))}
+
+      </button>
+      {/* <button></button>
+      <button></button>
+      <button></button> */}
     </div>
     )
 }

@@ -9,11 +9,9 @@ import App from '../style/App.css'
 const RegistryPage = () => {
   const BASE_URL = 'http://localhost:3001/api'
   const [registry, setRegistry] = useState([])
-  const [category, setCategory] = useState({})
-  const [items, setItems] = useState([])
-  const [receipt, setReceipt] = useState({})
-  const [selectedItem, setSelectedItem] = useState(false)
-  const [checkout, setCheckout] = useState([])
+  // const [receipt, setReceipt] = useState({})
+  // const [selectedItem, setSelectedItem] = useState(false)
+  // const [checkout, setCheckout] = useState([])
 
   let { regId } = useParams()
 
@@ -22,11 +20,7 @@ const RegistryPage = () => {
     const getRegistry = async () => {
       const response = await axios.get(`${BASE_URL}/registry`)
       console.log(response)
-      // const result = await axios.get(
-      //   `${BASE_URL}/category/${response.}/items`
-      // )
       setRegistry(response.data)
-      // setCategory(result.data)
     }
     getRegistry()
     // }
@@ -50,7 +44,7 @@ const RegistryPage = () => {
     //   }
     //   getReceipt()
     // }
-  }, [selectedItem, regId])
+  }, [regId])
 
   return (
     <div className="registryPage">
