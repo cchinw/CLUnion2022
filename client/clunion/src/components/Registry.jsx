@@ -53,12 +53,10 @@ const page = () => {
     </div>
   }
 }
+let registryrender = page()
 
   
-  return (
-  <div className="registry">
-    page()
-  </div>)
+  return registryrender
 }
 
 export default Registry

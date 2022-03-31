@@ -1,6 +1,4 @@
 import React from 'react'
-// import axios from 'axios'
-// import { useEffect, useState } from 'react'
 import '../style/App.css'
 import HomeImage from '../highlights/HomeImage.png'
 import { useEffect, useState } from 'react'
@@ -27,8 +25,8 @@ const Home = () => {
       <h1>Welcome to #CLUnion2022</h1>
       <h3>
         Here you would receive any and all updates about Wendy and Lekan's
-        wedding, coming December 16, 2022, in Lagos, Nv igeria. We hope you are
-        as excited as we are!
+        wedding, coming December 16, 2022, in Lagos, Nigeria. We hope you are as
+        excited as we are!
       </h3>
       <div>
         <Registry registry={registry} />
