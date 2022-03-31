@@ -1,9 +1,9 @@
-// import React from "react"
-// import { useNavigate } from "react-router-dom"
+import React from "react"
+import { useNavigate } from "react-router-dom"
 
-// const Checkout = (props) => {
+const Checkout = (props) => {
 
-//   let navigate = useNavigate()
+  let navigate = useNavigate()
 
 //   const handleSubmit = (e) => {
 //     props.postCheckout(e)
@@ -45,6 +45,6 @@
 //       </form>
 //     </div>
 //   )
-// }
+}
 
-// export default Checkout
+export default Checkout

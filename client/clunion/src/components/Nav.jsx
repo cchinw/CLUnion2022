@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate, useLocation } from 'react-router-dom'
 import { useState, useEffect, useRef} from 'react'
 import React from "react"
 import '../style/Nav.css'
@@ -10,8 +10,15 @@ import Photos from './Photos'
 import ToDo from './ToDo'
 import Travel from './Travel'
 import WeddingParty from './WeddingParty'
+import Registry from './Registry'
+
+import {CSSTransition} from 'react-transition-group'
+import axios from 'axios'
 
 const Nav = (props) => {
+
+  let navigate = useNavigate()
+  const location = useLocation()
 
   const main = () => {
     return (
@@ -19,11 +26,6 @@ const Nav = (props) => {
           <Home />
           <Faq />
           <Guestbook />
-          <OurStory />
-          <Photos />
-          <ToDo />
-          <Travel />
-          <WeddingParty />
         </nav>
     )
   }
@@ -36,6 +38,16 @@ const Nav = (props) => {
     )
   }
 
+  const registry = async () => {
+    await axios.get(`http://localhost:30001/api/registry`).then(function (response) {
+      console.log(response)
+    }).catch(function (error) {
+      console.log(error)
+    })
+  }
+  registry()
+  navigate(location.pathname)
+
   const NavItems = (props) => {
     const [open, setOpen] = useState(false)
 
@@ -44,18 +56,12 @@ const Nav = (props) => {
         <NavLink exact activeClassName="homeLink" to='/' onClick={() => setOpen(!open)}>Home</NavLink>
         <NavLink activeClassName="faqLink" to='/faq' onClick={() => setOpen(!open)}>FAQs</NavLink>
         <NavLink activeClassName="guestbookLink" to='/guestbook/:gbid' onClick={() => setOpen(!open)}>Guest Signout</NavLink>
-        <NavLink activeClassName="ourStoryLink" to='/ourstory' onClick={() => setOpen(!open)}>Our Story</NavLink>
-        <NavLink activeClassName="photosLink" to='/photos' onClick={() => setOpen(!open)}>Photos</NavLink>
-        <NavLink activeClassName="toDoLink" to='/todo' onClick={() => setOpen(!open)}>To Do in Lagos</NavLink>
-        <NavLink activeClassName="travelLink" to='/travel' onClick={() => setOpen(!open)}>Travel Arrangements</NavLink>
-        <NavLink activeClassName="weddingPartyLink" to='/weddingparty' onClick={() => setOpen(!open)}>Wedding Party</NavLink>
-        <NavLink activeClassName="registryLink" to='/registry' onClick={() => setOpen(!open)}>Registry</NavLink>
         {open && props.children}
       </li>
     )
   }
 
-  const dropdownMenu = () => {
+  const DropdownMenu = () => {
     const [mainMenu, setMainMenu] = useState('main')
     const [menuHeight, setMenuHeight] = useState(null)
     const dropdownRef = useRef(null)
@@ -69,31 +75,46 @@ const Nav = (props) => {
       setMenuHeight(height)
     }
 
-    const dropdownItem = (props) => {
+    const DropdownItem = (props) => {
       return (
-        <a href="#" className="menu-item" onClick={() => props.goToMenu && setActiveMenu(props.goToMenu)}>
+        <a>
+        <NavLink activeClassName="ourStoryLink" to='/ourstory' onClick={() => props.goToMenu && setMainMenu(props.goToMenu)}></NavLink>
+        <NavLink activeClassName="photosLink" to='/photos' onClick={() => props.goToMenu && setMainMenu(props.goToMenu)}>Photos</NavLink>
+        <NavLink activeClassName="toDoLink" to='/todo' onClick={() => props.goToMenu && setMainMenu(props.goToMenu)}>To Do in Lagos</NavLink>
+        <NavLink activeClassName="travelLink" to='/travel' onClick={() => props.goToMenu && setMainMenu(props.goToMenu)}>Travel Arrangements</NavLink>
+        <NavLink activeClassName="weddingPartyLink" to='/weddingparty' onClick={() => props.goToMenu && setMainMenu(props.goToMenu)}>Wedding Party</NavLink>
+        <NavLink activeClassName="registryLink" to='/registry' onClick={() => props.goToMenu && setMainMenu(props.goToMenu)}>Registry</NavLink>
         <span className="icon-button">{props.leftIcon}</span>
-        {props.children}
-        <span className="icon-right">{props.rightIcon}</span>
-      </a>
+         {props.children}
+       <span className="icon-right">{props.rightIcon}</span>
+        </a>
+        
+      //   <a href="#" className="menu-item" onClick={() => props.goToMenu && setActiveMenu(props.goToMenu)}>
+      //   <span className="icon-button">{props.leftIcon}</span>
+      //   {props.children}
+      //   <span className="icon-right">{props.rightIcon}</span>
+      // </a>
       )
     }
 
     return (
       <div className='dropdownMenu' style={{height: menuHeight }} ref={dropdownRef}>
 
-        <CSSTransition
-          in={activeMenu === 'main'}
-          timeout={500}
-          classNames="menu-primary"
-          unmountOnExit
-          onEnter={calcHeight}>
-            <div className='menu'>
-              <Nav>Menu</Nav>
-            </div>
-
-        </CSSTransition>
-
+<CSSTransition
+        in={mainMenu === 'main'}
+        timeout={500}
+        classNames="menu-primary"
+        unmountOnExit
+        onEnter={calcHeight}>
+        <div className="menu">
+          <OurStory />
+          <Photos/>
+          <Travel />
+          <ToDo />
+          <WeddingParty />
+          <Registry goToMenu="registry" />
+        </div>
+      </CSSTransition>
       </div>
     )
   }
