@@ -26,6 +26,7 @@ const Registry = ({BASE_URL, registry, checkout, setCheckout, category, items, s
 
   const checkoutItems = async () => {
     const response = await axios.post(`${BASE_URL}/checkout/:regid`)
+    setCheckout(response.data)
     setSelectedItem(true)
   }
 
@@ -37,7 +38,7 @@ const page = () => {
   } else {
     <div className="registryComponent">
       <div className="registryInfo">
-        <h1>{registry.title}</h1>
+        <h1>{items.title}</h1>
         <p>Thank you so much for your kind gift. We really appreciate you! Love, Chinwendu and Lekan</p>
         <img src={items.image} alt='item-images'/>
       </div>

@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import Registry from '../components/Registry'
+
 import App from '../style/App.css'
 
 const RegistryPage = () => {
@@ -27,19 +28,19 @@ const RegistryPage = () => {
         setCategory(result.data)
       }
       getRegistry()
-    } else if (isSelected && items > 1) {
+    } else if (selectedItem && items > 1) {
       const getItem = async () => {
         const response = await axios.get(`${BASE_URL}/item/:id`)
         setItems(response)
       }
       getItem()
-    } else if (isSelected && checkout > 1) {
+    } else if (selectedItem && checkout > 1) {
       const getCheckout = async () => {
         const response = await axios.get(`${BASE_URL}/checkout/${regId}`)
         setCheckout(response)
       }
       getCheckout()
-    } else if (isSelected) {
+    } else if (selectedItem) {
       const getReceipt = async () => {
         const response = await axios.get(`${BASE_URL}/receipts/:rID`)
         setReceipt(response)
@@ -62,6 +63,8 @@ const RegistryPage = () => {
         setCategory={setCategory}
         receipt={receipt}
         setReceipt={setReceipt}
+        items={items}
+        setItems={setItems}
       />
     </div>
   )
