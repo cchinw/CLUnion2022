@@ -3,7 +3,8 @@ const {
   Checkout,
   Item,
   Receipt,
-  Registry
+  Registry,
+  Message
 } = require('../models/index')
 
 // This works
@@ -97,7 +98,8 @@ const createCheckout = async (req, res) => {
     const registry = await Registry.findById(req.params.regid)
     console.log(registry)
     if (registry.itemsLeft > 0) {
-      registry.itemsLeft = registry.itemsLeft - 1
+      const itemsLeft = await Registry.findByIdAndUpdate(req.params.itemsLeft)
+      itemsLeft - 1
       registry.save()
       res.json(registry)
     } else {
@@ -107,6 +109,13 @@ const createCheckout = async (req, res) => {
     return res.status(500).send(error.message)
   }
 }
+
+// const createMessage = async (req, res) => {
+//   try {
+//     const message= await Message.findById(req.params.id)
+//     console.log(message)
+//   }
+// }
 module.exports = {
   getRegistry,
   getRegistryById,
@@ -117,4 +126,5 @@ module.exports = {
   getItemById,
   getItemsByCategoryId,
   createCheckout
+  // createMessage
 }

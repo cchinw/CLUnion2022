@@ -9,9 +9,9 @@ const Checkout = new Schema(
     address: { type: String, required: true },
     phoneNumber: { type: Number, required: true },
     category: [
-      { type: Schema.Types.ObjectId, ref: 'Registry', required: true }
+      { type: Schema.Types.ObjectId, ref: 'Registry', required: false }
     ],
-    reservedStatus: { type: Boolean, required: true }
+    reservedStatus: { type: Boolean, required: false }
   },
   { timestamps: true }
 )

@@ -18,6 +18,8 @@ router.get('/receipt/:rId', controllers.getReceiptbyId)
 
 router.get('/item/:id', controllers.getItemById)
 
-router.get('/checkout/:regid', controllers.createCheckout)
+router.post('/checkout/:regid', controllers.createCheckout)
+
+// router.post('/message', controllers.createMessage)
 
 module.exports = router
