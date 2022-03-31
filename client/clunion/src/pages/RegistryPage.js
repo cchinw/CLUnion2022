@@ -17,8 +17,9 @@ const RegistryPage = () => {
 
   useEffect(() => {
     // if (!selectedItem) {
+    let isSelected = false
     const getRegistry = async () => {
-      const response = await axios.get(`${BASE_URL}/registry`)
+      const response = await axios.get(`${BASE_URL}/registry/${regId}`)
       console.log(response)
       setRegistry(response.data)
     }

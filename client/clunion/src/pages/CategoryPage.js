@@ -8,30 +8,30 @@ import App from '../style/App.css'
 const CategoryPage = () => {
   const BASE_URL = 'http://localhost:3001/api'
   const [category, setCategory] = useState([])
-  const [title, setTitle] = useState('')
-
-  let { id } = useParams()
 
   useEffect(() => {
-    let isCancelled = false
+    let isSelected = false
     const getCategory = async () => {
-      const response = await axios.get(`${BASE_URL}/category/${id}`)
+      const response = await axios.get(`${BASE_URL}/registry`)
       console.log(response, 'CATEGORY THAT WORKS')
-      if (!isCancelled) {
-        setTitle(response.data)
+      if (!isSelected) {
+        setCategory(response.data)
+        console.log(response.data)
       }
     }
     getCategory()
     return () => {
-      isCancelled = true
+      isSelected = true
     }
-  }, [id])
+  }, [])
 
   return (
     <div className="categoryPage">
-      {title.map((cat) => (
-        <Link to={`/category/${cat.id}`} key={cat.id}>
-          <Category {...cat} title={cat.title} BASE_URL={BASE_URL} />
+      {category.map((cat) => (
+        <Link to={`/registry/${cat.category}`} key={cat._id}>
+          <div>
+            <h2>{cat.title}</h2>
+          </div>
         </Link>
       ))}
     </div>

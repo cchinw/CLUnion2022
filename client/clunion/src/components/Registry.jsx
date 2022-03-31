@@ -1,7 +1,5 @@
 import React, { useState } from "react"
 import Item from './Item'
-import Checkout from "./Checkout"
-import Receipt from './Receipt'
 import { useEffect } from "react"
 import axios from "axios"
 
@@ -59,12 +57,6 @@ return (
     {items.map((item) => (
       <Item 
       item={item}
-      // key={item._id}
-      // title={item.title}
-      // image={item.image}
-      // description={item.description}
-      // price={item.price}
-      // quantityNeeded={item.quantityNeeded}
       />
     ))}
   </div>
