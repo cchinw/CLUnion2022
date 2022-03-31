@@ -2,13 +2,25 @@ import { Link} from 'react-router-dom'
 import React from "react"
 import '../style/App.css'
 
-const Nav = (props) => {
+const Nav = () => {
 
-      return (
+return (
+    <header>
+      <nav>
         <div>
-          <Link to='/api'>Home</Link>
-          <Link to='/api/registry' >Registry</Link>
+          <h1>Welcome to Our Wedding Registry!</h1>
         </div>
+        <div className='nav'>
+          <Link to='/'>Home</Link>
+          <Link to='./faq'>FAQ</Link>
+          <Link to='./registry'>Registry</Link>
+          <div className='checkout'>
+            <Link to="./checkout/:regid">Checkout</Link>
+          </div>
+        </div>
+      </nav>
+    </header>
+
       )
 }
 
