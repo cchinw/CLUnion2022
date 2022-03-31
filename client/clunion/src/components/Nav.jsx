@@ -8,7 +8,7 @@ return (
     <header>
       <nav>
         <div>
-          <h1>Welcome to Our Wedding Registry!</h1>
+          <h1>Chinwendu x Lekan</h1>
         </div>
         <div className='nav'>
           <Link to='/'>Home</Link>
