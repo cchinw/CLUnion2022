@@ -3,33 +3,45 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import Registry from '../components/Registry'
+import App from '../style/App.css'
 
 const RegistryPage = () => {
-  const BASE_URL = 'http://localhost:3000/api'
+  const BASE_URL = 'http://localhost:3001/api'
   const [registry, setRegistry] = useState({})
   const [category, setCategory] = useState({})
   const [items, setItems] = useState([])
   const [receipt, setReceipt] = useState({})
   const [selectedItem, setSelectedItem] = useState(false)
-  const [cart, setCart] = useState([])
+  const [checkout, setCheckout] = useState([])
 
   let { regId } = useParams()
 
   useEffect(() => {
     if (!selectedItem) {
       const getRegistry = async () => {
-        const response = await axios.get(`${BASE_URL}/registry/${regId}`)
+        const response = await axios.get(`${BASE_URL}/registry`)
         const result = await axios.get(
           `${BASE_URL}/category/${response.data.category}/items`
         )
-
         setRegistry(response.data)
         setCategory(result.data)
       }
       getRegistry()
+    } else if (isSelected && items > 1) {
+      const getItem = async () => {
+        const response = await axios.get(`${BASE_URL}/item/:id`)
+        setItems(response)
+      }
+      getItem()
+    } else if (isSelected && checkout > 1) {
+      const getCheckout = async () => {
+        const response = await axios.get(`${BASE_URL}/checkout/${regId}`)
+        setCheckout(response)
+      }
+      getCheckout()
     } else if (isSelected) {
       const getReceipt = async () => {
-        const response = await axios.get(`${BASE_URL}/receipts/rId`)
+        const response = await axios.get(`${BASE_URL}/receipts/:rID`)
         setReceipt(response)
       }
       getReceipt()
@@ -37,7 +49,7 @@ const RegistryPage = () => {
   }, [selectedItem, regId])
 
   return (
-    <div>
+    <div className="registryPage">
       <Registry
         BASE_URL={BASE_URL}
         registry={registry}
