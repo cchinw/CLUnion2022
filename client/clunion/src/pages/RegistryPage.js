@@ -54,8 +54,8 @@ const RegistryPage = () => {
         BASE_URL={BASE_URL}
         registry={registry}
         setRegistry={setRegistry}
-        cart={cart}
-        setCart={setCart}
+        checkout={checkout}
+        setCheckout={setCheckout}
         selectedItem={selectedItem}
         setSelectedItem={setSelectedItem}
         category={category}
