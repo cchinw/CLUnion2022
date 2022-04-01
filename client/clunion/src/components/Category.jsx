@@ -87,7 +87,7 @@ const Category = ({item}) => {
  
 
   return (
-    <div className='selectCategoryItems'>
+    <div className='registry-display'>
         {categoryItems.map((items) => (
             <Item
             items={items}

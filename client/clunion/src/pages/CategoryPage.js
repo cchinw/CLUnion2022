@@ -36,11 +36,12 @@ const CategoryPage = () => {
   }, [])
 
   return (
-    <div className="categoryPage">
+    <div className="container">
       {category.map((cat) => (
         <Link to={`/registry/${cat.category}`} key={cat._id}>
-          <div>
-            <button className="categoryBtn">{cat.title}</button>
+          <div className="column">
+            <img src={cat.image} />
+            <button className="card">{cat.title}</button>
           </div>
         </Link>
       ))}
