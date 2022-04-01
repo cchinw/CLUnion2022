@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import Item from './Item'
 import { useEffect } from "react"
 import axios from "axios"
+import '../style/App.css'
 
 
 const Registry = (props) => {
@@ -31,7 +32,7 @@ const Registry = (props) => {
   // );
 
 return (
-  <div>
+  <div className="registry">
     {items.map((item) => (
       <Item 
       item={item}

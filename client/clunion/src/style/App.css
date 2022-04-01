@@ -41,5 +41,50 @@
   display: flex;
 }
 
-.home {
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  align-content: space-around;
+  background-color: #fefae0;
+  background-size: auto;
+  background-repeat: no-repeat;
+}
+
+.categoryBtn {
+  margin: 68px;
+  height: 20vh;
+  width: 25vh;
+  color: #ffe8d6;
+  border-radius: 50%;
+  font-size: 30px;
+  text-align: center;
+  font-weight: bold;
+  background-color: #b7b7a4;
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  height: 50px;
+  background-color: #b7b7a4;
+  margin-top: 5px;
+  text-align: center;
+  line-height: normal;
+}
+
+.checkout {
+  display: flex;
+}
+
+.navheading {
+  font-family: 'Sacramento', cursive;
+  font-size: 50px;
+  height: -100px;
+  margin: 0;
+  color: #b7b7a4;
 }

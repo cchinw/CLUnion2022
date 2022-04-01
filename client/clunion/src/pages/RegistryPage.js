@@ -3,8 +3,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import Registry from '../components/Registry'
-
-import App from '../style/App.css'
+import '../style/App.css'
 
 const RegistryPage = () => {
   const BASE_URL = 'http://localhost:3001/api'

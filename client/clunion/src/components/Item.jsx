@@ -1,19 +1,19 @@
 import React from 'react'
 
-const Item = ({ item, addToCheckout, removeFromCheckout }) => {
+const Item = ({ items, addOnClick, removeOnClick }) => {
 
   
     
   return (
     <div className='Item'>
       <div className="itemName" >
-        <img src={item.image} alt='food-image-picture'/>
-        <h3>{item.title}</h3>
-        <h5>{item.description}</h5>
-        <h5>{item.price}</h5>
-        <h6>{item.quantityNeeded}</h6>
-        <button onClick={item.addToCheckout}>Add to Cart</button>
-        <button onClick={item.removeFromCheckout}>Remove from Cart</button>
+        <img src={items.image} alt='registry-item-pic'/>
+        <h3>{items.title}</h3>
+        <h5>{items.description}</h5>
+        <h5>{items.price}</h5>
+        <h6>{items.quantityNeeded}</h6>
+        <button onClick={(e) => addOnClick(e, items._id)}>Add to Cart</button>
+        <button onClick={(e) => removeOnClick(e, items._id)}>Remove from Cart</button>
       </div>
     </div>
   )

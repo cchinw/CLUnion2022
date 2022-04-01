@@ -7,6 +7,7 @@ import Home from '../src/pages/Home'
 import Checkout from './components/Checkout'
 import CategoryPage from './pages/CategoryPage'
 import Category from './components/Category'
+import Message from './components/Message'
 import '../src/style/App.css'
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path="/registry/:regId" element={<Category />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/checkout/:id" element={<Checkout />} />
+          <Route path="/message" element={<Message />} />
         </Routes>
       </main>
     </div>

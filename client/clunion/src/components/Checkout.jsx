@@ -1,14 +1,15 @@
 import React from "react"
 import { useState } from "react"
-import { useNavigate, useParams } from "react-router-dom"
+import { useNavigate, useParams, Link } from "react-router-dom"
 import { useLocation } from "react-router-dom"
 import axios from "axios"
+import Receipt from "./Receipt"
 
-const Checkout = ({item}) => {
+const Checkout = ({category}) => {
 
   const location = useLocation()
   let navigate = useNavigate()
-  let { regId } = useParams()
+  let { id } = useParams()
 
   const [giftMessage, setGiftMessage] = useState('')
   const [email, setEmail] = useState('')
@@ -16,7 +17,6 @@ const Checkout = ({item}) => {
   const [name, setName] = useState('')
   const [address, setAddress] =useState('')
   const [phoneNumber, setPhoneNumber] = useState(0)
-  const [category, setCategory] = useState('')
   const [reservedStatus, setReservedStatus] = useState(true)
 
 
@@ -44,10 +44,6 @@ const Checkout = ({item}) => {
     setPhoneNumber(e.target.value)
   }
 
-  const saveCategory = (e) => {
-    setCategory(e.target._id)
-  }
-
   const saveReservedStatus = () => {
     setReservedStatus(true)
   }
@@ -66,7 +62,7 @@ const Checkout = ({item}) => {
     console.log(data, 'CHECKOUT DATA')
     const saveCheckout = async () => {
       await axios.post(`http://localhost:3001/api/checkout/`, data).then(function (response) {
-        console.log(response)
+        console.log(response, 'AXIOS POST FOR CHECKOUT')
       }).catch(function (error) {
         console.log(error)
       })
@@ -75,10 +71,16 @@ const Checkout = ({item}) => {
     navigate(location.pathname)
   }
 
+  const openReceipt = () => {
+    <Link>
+      <Receipt />
+    </Link>
+  }
+
   return (
     <div className="checkout">
       <h1>Checkout Your items Here</h1>
-      <form onSubmit={postCheckout}>
+      <form onChange={postCheckout} onSubmit={openReceipt}>
         <textarea type='text' placeholder="Message?" value={giftMessage} onChange={saveGiftMessage}></textarea>
         <input type='text' placeholder="Email" value={email} onChange={saveEmail}></input>
         <input type='number' placeholder="Payment Details" value={paymentDetails} onChange={savePaymentDetails}></input>

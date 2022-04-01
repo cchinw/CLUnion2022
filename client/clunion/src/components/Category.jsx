@@ -5,9 +5,10 @@ import { useParams } from 'react-router-dom'
 import Item from '../components/Item'
 import Checkout from './Checkout'
 import Receipt from './Receipt'
+import '../style/App.css'
 
 
-const Category = ({item, }) => {
+const Category = ({item}) => {
   const {regId} = useParams()
   const [categoryItems, setCategoryItems] = useState([])
   const [receipt, setReceipt] = useState({})
@@ -84,9 +85,9 @@ const Category = ({item, }) => {
 
   return (
     <div className='selectCategoryItems'>
-        {categoryItems.map((item) => (
+        {categoryItems.map((items) => (
             <Item
-            item={item}
+            items={items}
             addToCheckout={addToCheckout}
             removeFromCheckout={removeFromCheckout}
             checkoutCondition={checoutCondition}
