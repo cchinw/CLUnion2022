@@ -39,7 +39,7 @@ const CategoryPage = () => {
     <div className="container">
       {category.map((cat) => (
         <Link to={`/registry/${cat.category}`} key={cat._id}>
-          <div className="column">
+          <div className="card">
             <img src={cat.image} />
             <button className="card">{cat.title}</button>
           </div>

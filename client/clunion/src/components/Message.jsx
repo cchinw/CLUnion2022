@@ -36,7 +36,7 @@ const Message = () => {
   return (
     <div>
       <h2>Leave a message for the couple!</h2>
-      <div className="messageBoard">
+      <div>
         <GuestMessage handleChange={handleChange} addMessage={addMessage} message={message}/>
         <PostMessage postMessage={postMessage} removeMessage={removeMessage}/>
       </div>

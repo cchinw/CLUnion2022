@@ -85,13 +85,15 @@ const Checkout = ({category}) => {
     <div className="checkout">
       <h1>Checkout Your items Here</h1>
       <form onSubmit={openReceipt}>
-        <textarea type='text' placeholder="Message?" value={giftMessage} onChange={saveGiftMessage}></textarea>
-        <input type='text' placeholder="Email" value={email} onChange={saveEmail}></input>
-        <input type='number' placeholder="Payment Details" value={paymentDetails} onChange={savePaymentDetails}></input>
-        <input type='text' placeholder="Name" value={name} onChange={saveName}></input>
-        <input type='text' placeholder="Address" value={address} onChange={saveAddress}></input>
-        <input type='number' placeholder="Phone Number" value={phoneNumber} onChange={savePhoneNumber}></input>
-        <button>Confirm Payment</button>
+        <div>
+          <textarea type='text' placeholder="Message?" value={giftMessage} onChange={saveGiftMessage}></textarea>
+          <input className="form-input" type='text' placeholder="Email" value={email} onChange={saveEmail}></input>
+          <input className="form-input" type='number' placeholder="Payment Details" value={paymentDetails} onChange={savePaymentDetails}></input>
+          <input className="form-input" type='text' placeholder="Name" value={name} onChange={saveName}></input>
+          <input className="form-input" type='text' placeholder="Address" value={address} onChange={saveAddress}></input>
+          <input className="form-input" type='number' placeholder="Phone Number" value={phoneNumber} onChange={savePhoneNumber}></input>
+          <button>Confirm Payment</button>
+        </div>
       </form>
 
     </div>
