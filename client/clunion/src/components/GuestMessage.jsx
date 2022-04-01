@@ -1,3 +1,6 @@
+import '../style/App.css'
+
+
 const GuestMessage = (props) => {
   return (
     <div>

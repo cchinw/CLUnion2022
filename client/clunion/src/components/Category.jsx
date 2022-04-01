@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import Item from '../components/Item'
 import Checkout from './Checkout'
 import Receipt from './Receipt'
@@ -57,10 +57,10 @@ const Category = ({item}) => {
   }
 
 
- const checoutCondition = () => {
+ const checkoutCondition = () => {
   if (selectedItem) {
-    <Checkout checkoutId={checkout._id} items={items} price={items.price} />
-    } else if (selectedItem && items > 1) {
+      <Checkout checkoutId={checkout._id} items={items} price={items.price} />
+  }else if (selectedItem && items > 1) {
       <Receipt receiptId={receipt._id} price={items.price} items={items} checkout={checkout} />
     } else {
       <div className="registryComponent">
@@ -79,7 +79,7 @@ const Category = ({item}) => {
           <Checkout onClick={checkoutItems} checkout={checkout} />
         </section>
       </div>
-    }
+  }
  }
  
 
@@ -90,7 +90,7 @@ const Category = ({item}) => {
             items={items}
             addToCheckout={addToCheckout}
             removeFromCheckout={removeFromCheckout}
-            checkoutCondition={checoutCondition}
+            checkoutCondition={checkoutCondition}
             />
         ))}
     </div>

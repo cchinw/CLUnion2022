@@ -4,6 +4,8 @@ import { useNavigate, useParams, Link } from "react-router-dom"
 import { useLocation } from "react-router-dom"
 import axios from "axios"
 import Receipt from "./Receipt"
+import '../style/App.css'
+
 
 const Checkout = ({category}) => {
 

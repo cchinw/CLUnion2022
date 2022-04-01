@@ -2,6 +2,7 @@ import React from 'react'
 import Checkout from '../components/Checkout'
 import axios from 'axios'
 import { useState } from 'react'
+import '../style/App.css'
 
 const Receipt = ({checkout, item, category}) => {
 

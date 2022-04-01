@@ -65,16 +65,14 @@ body {
   background-color: #b7b7a4;
 }
 
-.nav {
+nav {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
 
   height: 50px;
   background-color: #b7b7a4;
   margin-top: 5px;
   text-align: center;
-  line-height: normal;
 }
 
 .checkout {

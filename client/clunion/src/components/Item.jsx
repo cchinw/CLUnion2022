@@ -1,8 +1,8 @@
+import '../style/App.css'
 import React from 'react'
 
-const Item = ({ items, addOnClick, removeOnClick }) => {
+const Item = ({ items, checkoutCondition, addToCheckout, removeFromCheckout}) => {
 
-  
     
   return (
     <div className='Item'>
@@ -12,8 +12,8 @@ const Item = ({ items, addOnClick, removeOnClick }) => {
         <h5>{items.description}</h5>
         <h5>{items.price}</h5>
         <h6>{items.quantityNeeded}</h6>
-        <button onClick={(e) => addOnClick(e, items._id)}>Add to Cart</button>
-        <button onClick={(e) => removeOnClick(e, items._id)}>Remove from Cart</button>
+        <button onClick={addToCheckout} onChange={items.checkoutCondition}>Add to Cart</button>
+        <button onClick={removeFromCheckout} onChange={items.checkoutCondition}>Remove from Cart</button>
       </div>
     </div>
   )
