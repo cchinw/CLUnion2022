@@ -50,11 +50,14 @@ const Category = ({item}) => {
     })
   }
   
-  const checkoutItems = async () => {
-    const response = await axios.post(`http://localhost:3001/api//checkout/:regid`)
-    setCheckout(response.data)
-    setSelectedItem(true)
-  }
+  useEffect(() => {
+    const checkoutItems = async () => {
+      const response = await axios.post(`http://localhost:3001/api//checkout/${regId}`)
+      setCheckout(response.data)
+      setSelectedItem(true)
+    }
+    checkoutItems()
+  } ,[])
 
 
  const checkoutCondition = () => {
@@ -76,7 +79,7 @@ const Category = ({item}) => {
             })}
         </div>
         <section className="checkout">
-          <Checkout onClick={checkoutItems} checkout={checkout} />
+          <Checkout onClick={setSelectedItem} checkout={checkout} />
         </section>
       </div>
   }

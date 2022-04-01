@@ -1,11 +1,24 @@
 import React from 'react'
 import Checkout from '../components/Checkout'
 import axios from 'axios'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import '../style/App.css'
 
 const Receipt = ({checkout, item, category}) => {
 
+  const [receipt, setReceipt] = useState({})
+
+  useEffect(() => {
+    const saveReceipt = async () => {
+      console.log(receipt, "AXIOS RECEIPT")
+      const response = await axios.post(`http:localhost:3001/api/receipt`)
+        console.log(response, 'RECEIPT POST')
+        setReceipt(response.data)
+        console.log(response.data)
+    }
+    saveReceipt()
+  }, [])
+  
   let items = checkout.sort()
   let total = 0
 
@@ -39,23 +52,14 @@ const Receipt = ({checkout, item, category}) => {
   console.log(data, 'ITEM DETAILS')
 
 
-  const receipt = {
-    items: [...checkout],
-    totalCost: data.reduce((total, items) => total += items.price * items.quantityNeeded, 0),
-    date: Date,
-    purchaseStatus: true,
-    registry: category
-  }
+  // const receipt = {
+  //   items: [...checkout],
+  //   totalCost: data.reduce((total, items) => total += items.price * items.quantityNeeded, 0),
+  //   date: Date,
+  //   purchaseStatus: true,
+  //   registry: category
+  // }
 
-  const saveReceipt = async () => {
-    console.log(receipt, "AXIOS RECEIPT")
-    await axios.post(`http:localhost:3001/api/receipt`, receipt).then(function (response) {
-      console.log(response)
-    }).catch(function(error) {
-      console.log(error)
-    })
-  }
-  saveReceipt()
 
 
 

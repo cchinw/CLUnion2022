@@ -7,6 +7,7 @@ import Receipt from "./Receipt"
 import '../style/App.css'
 
 
+
 const Checkout = ({category}) => {
 
   const location = useLocation()
@@ -74,15 +75,16 @@ const Checkout = ({category}) => {
   }
 
   const openReceipt = () => {
-    <Link>
-      <Receipt />
+    <Link to='/receipt'>
+      {/* <Receipt reservedStatus={saveReservedStatus}/> */}
     </Link>
   }
 
+  
   return (
     <div className="checkout">
       <h1>Checkout Your items Here</h1>
-      <form onChange={postCheckout} onSubmit={openReceipt}>
+      <form onSubmit={openReceipt}>
         <textarea type='text' placeholder="Message?" value={giftMessage} onChange={saveGiftMessage}></textarea>
         <input type='text' placeholder="Email" value={email} onChange={saveEmail}></input>
         <input type='number' placeholder="Payment Details" value={paymentDetails} onChange={savePaymentDetails}></input>
@@ -91,6 +93,7 @@ const Checkout = ({category}) => {
         <input type='number' placeholder="Phone Number" value={phoneNumber} onChange={savePhoneNumber}></input>
         <button>Confirm Payment</button>
       </form>
+
     </div>
   )
 }

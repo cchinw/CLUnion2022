@@ -10,7 +10,9 @@ const Message = () => {
   const [message, setMessage] = useState('')
 
   const handleChange = (e) => {
+    e.preventDefault()
     setMessage(e.target.value)
+
   }
 
   const addMessage = () => {
@@ -34,7 +36,7 @@ const Message = () => {
   return (
     <div>
       <h2>Leave a message for the couple!</h2>
-      <div>
+      <div className="messageBoard">
         <GuestMessage handleChange={handleChange} addMessage={addMessage} message={message}/>
         <PostMessage postMessage={postMessage} removeMessage={removeMessage}/>
       </div>

@@ -2,16 +2,16 @@ import React from "react"
 import '../style/App.css'
 
 const PostMessage = (props) => {
-
+console.log(props.postMessage)
   return (
-    <div>
-      {props.postMessage.map((message, index) => (
-        <div key={index}>
-          {message}
-          <button onClick={() => props.removeMessage(index)}>Delete Message</button>
-        </div>
+    <ul>
+      {props.postMessage.map((msg, index) => (
+        <li className='msgList' key={index}>
+          {msg}
+          <button className='postMessageBtn' onClick={() => props.removeMessage(index)}>Delete Message</button>
+        </li>
       ))}
-    </div>
+    </ul>
   )
 }
 

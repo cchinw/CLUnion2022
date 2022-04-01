@@ -9,6 +9,7 @@ import CategoryPage from './pages/CategoryPage'
 import Category from './components/Category'
 import Message from './components/Message'
 import '../src/style/App.css'
+import Receipt from './components/Receipt'
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/checkout/:id" element={<Checkout />} />
           <Route path="/message" element={<Message />} />
+          <Route path="/receipt" element={<Receipt />}></Route>
         </Routes>
       </main>
     </div>

@@ -86,3 +86,29 @@ nav {
   margin: 0;
   color: #b7b7a4;
 }
+
+.addMessageBtn,
+.postMessageBtn {
+  padding: 0.5em 1em;
+  background: #ff3939;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 10%;
+  cursor: pointer;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.addMessageBtn.hover {
+  background: #ff6b6b;
+}
+
+.leaveMsg {
+  height: 50vh;
+  width: 50vw;
+}
+
+.msgList {
+  margin: 5px;
+}
