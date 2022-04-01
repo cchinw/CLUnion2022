@@ -3,11 +3,19 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import Item from '../components/Item'
+import Checkout from './Checkout'
+import Receipt from './Receipt'
 
 
-const Category = (props) => {
+const Category = ({item, }) => {
   const {regId} = useParams()
   const [categoryItems, setCategoryItems] = useState([])
+  const [receipt, setReceipt] = useState({})
+  const [selectedItem, setSelectedItem] = useState(false)
+  const [checkout, setCheckout] = useState([])
+  const [items, setItems] = useState([])
+  const BASE_URL = 'http://localhost:3001/api'
+
 
   useEffect(() => {
     let isCancelled = false
@@ -24,18 +32,66 @@ const Category = (props) => {
     }
   }, [])
 
+  const addToCheckout = (e, id) => {
+    setCheckout((currentCheckout) => {return [...currentCheckout, id]})
+  }
+
+  const removeFromCheckout = (e, id) => {
+    setCheckout((currentCheckout) => {
+      let items = currentCheckout
+      for (let i=0; i<items.length; i++) {
+        if (items[i] === id) {
+          items.splice(i, 1)
+          break
+        }
+      }
+      return [...items]
+    })
+  }
+  
+  const checkoutItems = async () => {
+    const response = await axios.post(`http://localhost:3001/api//checkout/:regid`)
+    setCheckout(response.data)
+    setSelectedItem(true)
+  }
+
+
+ const checoutCondition = () => {
+  if (selectedItem) {
+    <Checkout checkoutId={checkout._id} items={items} price={items.price} />
+    } else if (selectedItem && items > 1) {
+      <Receipt receiptId={receipt._id} price={items.price} items={items} checkout={checkout} />
+    } else {
+      <div className="registryComponent">
+        <div className="registryInfo">
+          <h1>{items.title}</h1>
+          <p>Thank you so much for your kind gift. We really appreciate you! Love, Chinwendu and Lekan</p>
+          <img src={items.image} alt='item-images'/>
+        </div>
+        <div className="registryItems">
+          <h2>Categories</h2>
+            {items.map((item) => {
+              (<Item BASE_URL={BASE_URL} item={item} className='item' key={item._id} onClickAdd={addToCheckout} onClickRemove={removeFromCheckout} />)
+            })}
+        </div>
+        <section className="checkout">
+          <Checkout onClick={checkoutItems} checkout={checkout} />
+        </section>
+      </div>
+    }
+ }
+ 
+
   return (
     <div className='selectCategoryItems'>
-      <button>
         {categoryItems.map((item) => (
             <Item
             item={item}
+            addToCheckout={addToCheckout}
+            removeFromCheckout={removeFromCheckout}
+            checkoutCondition={checoutCondition}
             />
         ))}
-      </button>
-      {/* <button></button>
-      <button></button>
-      <button></button> */}
     </div>
     )
 }

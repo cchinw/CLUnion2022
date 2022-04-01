@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import { useLocation } from "react-router-dom"
 import axios from "axios"
 
-const Checkout = (props) => {
+const Checkout = ({item}) => {
 
   const location = useLocation()
   let navigate = useNavigate()
@@ -18,6 +18,8 @@ const Checkout = (props) => {
   const [phoneNumber, setPhoneNumber] = useState(0)
   const [category, setCategory] = useState('')
   const [reservedStatus, setReservedStatus] = useState(true)
+
+
 
   const saveGiftMessage = (e) => {
     setGiftMessage(e.target.value)
@@ -63,7 +65,7 @@ const Checkout = (props) => {
     }
     console.log(data, 'CHECKOUT DATA')
     const saveCheckout = async () => {
-      await axios.post(`http://localhost:3001/api/checkout/${regId}`, data).then(function (response) {
+      await axios.post(`http://localhost:3001/api/checkout/`, data).then(function (response) {
         console.log(response)
       }).catch(function (error) {
         console.log(error)
@@ -78,11 +80,11 @@ const Checkout = (props) => {
       <h1>Checkout Your items Here</h1>
       <form onSubmit={postCheckout}>
         <textarea type='text' placeholder="Message?" value={giftMessage} onChange={saveGiftMessage}></textarea>
-        <input type='text' placeholder="Email" value={giftMessage} onChange={saveEmail}></input>
-        <input type='number' placeholder="Payment Details" value={giftMessage} onChange={savePaymentDetails}></input>
-        <input type='text' placeholder="Name" value={giftMessage} onChange={saveName}></input>
-        <input type='text' placeholder="Address" value={giftMessage} onChange={saveAddress}></input>
-        <input type='text' placeholder="Phone Number" value={giftMessage} onChange={savePhoneNumber}></input>
+        <input type='text' placeholder="Email" value={email} onChange={saveEmail}></input>
+        <input type='number' placeholder="Payment Details" value={paymentDetails} onChange={savePaymentDetails}></input>
+        <input type='text' placeholder="Name" value={name} onChange={saveName}></input>
+        <input type='text' placeholder="Address" value={address} onChange={saveAddress}></input>
+        <input type='number' placeholder="Phone Number" value={phoneNumber} onChange={savePhoneNumber}></input>
         <button>Confirm Payment</button>
       </form>
     </div>

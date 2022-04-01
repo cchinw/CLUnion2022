@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Item = ({ item, onClickAdd, onClickMinus }) => {
+const Item = ({ item, addToCheckout, removeFromCheckout }) => {
 
   
     
@@ -12,8 +12,8 @@ const Item = ({ item, onClickAdd, onClickMinus }) => {
         <h5>{item.description}</h5>
         <h5>{item.price}</h5>
         <h6>{item.quantityNeeded}</h6>
-        <button onClick={(e) => onClickAdd(e, item._id)}>Add to Cart</button>
-        <button onClick={(e) => onClickMinus(e, item._id)}>Remove from Cart</button>
+        <button onClick={item.addToCheckout}>Add to Cart</button>
+        <button onClick={item.removeFromCheckout}>Remove from Cart</button>
       </div>
     </div>
   )
