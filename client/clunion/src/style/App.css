@@ -249,3 +249,140 @@ button {
     display: block;
   }
 }
+
+/* Nav styling */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 50px 15px 50px;
+  background-image: linear-gradient(to right, #a0b5eb, #c9f0e4);
+  color: #fff;
+}
+
+.navigationLinks a {
+  color: #4799e9;
+  font-weight: bold;
+}
+.logo {
+  font-size: 32px;
+  font-family: 'Sacramento', cursive;
+}
+.nav-menu {
+  display: flex;
+  gap: 1em;
+  font-size: 18px;
+}
+.nav-menu li a:hover {
+  color: #fff;
+}
+.nav-menu li {
+  padding: 5px 14px;
+}
+
+input[type='checkbox'] {
+  display: none;
+}
+
+.hamburger {
+  display: none;
+  font-size: 24px;
+  user-select: none;
+}
+
+img {
+  width: 100%;
+  border-radius: 12px;
+  height: 214px;
+  object-fit: cover;
+}
+
+#container {
+  max-width: 300px;
+
+  /* Add empty space above the container (20% of the view height) */
+  margin-top: 10vh;
+}
+
+.card {
+  /* Change background color */
+  background-color: white;
+
+  /* Add border */
+  border: 1px solid #bacdd8;
+
+  /* Add space between the border and the content */
+  padding: 8px;
+
+  border-radius: 12px;
+}
+
+p {
+  font-size: 14px;
+  color: #7f8c9b;
+  line-height: 150%;
+}
+
+/* Style button element */
+button {
+  border: none;
+  padding: 12px 24px;
+  border-radius: 50px;
+
+  font-weight: 600;
+  color: #0077ff;
+  background-color: #e0efff;
+
+  /* Button is inline-block element by default, it need to have block display for margin: 0 auto; to work */
+  margin: 0 auto;
+  display: block;
+
+  /* Button is a clickable element, therefore it should have a pointer cursor */
+  cursor: pointer;
+}
+
+.card__details {
+  /* Add space around the details */
+  padding: 16px 8px 8px 8px;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 15px;
+  }
+  .nav-menu {
+    display: none;
+    position: absolute;
+    background-image: linear-gradient(to right, #a0b5eb, #c9f0e4);
+    right: 0;
+    left: 0;
+    text-align: center;
+    padding: 16px 0;
+  }
+  .logo {
+    font-size: 15px;
+  }
+  .nav-menu li + li {
+    margin-top: 20px;
+  }
+  input[type='checkbox']:checked ~ .nav-menu {
+    display: block;
+  }
+  .hamburger {
+    display: block;
+  }
+}
