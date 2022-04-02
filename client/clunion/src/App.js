@@ -7,7 +7,7 @@ import Home from '../src/pages/Home'
 import Checkout from './components/Checkout'
 import CategoryPage from './pages/CategoryPage'
 import Category from './components/Category'
-import Message from './components/Message'
+import Message from './pages/Message'
 import '../src/style/App.css'
 import Receipt from './components/Receipt'
 

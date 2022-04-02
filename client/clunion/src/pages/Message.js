@@ -1,18 +1,16 @@
-import React from "react"
-import { useState } from "react"
-import PostMessage from "./PostMessage"
-import GuestMessage from "./GuestMessage"
+import React from 'react'
+import { useState } from 'react'
+import PostMessage from '../components/PostMessage'
+import GuestMessage from '../components/GuestMessage'
 import '../style/App.css'
 
 const Message = () => {
-
   const [postMessage, setPostMessage] = useState([])
   const [message, setMessage] = useState('')
 
   const handleChange = (e) => {
     e.preventDefault()
     setMessage(e.target.value)
-
   }
 
   const addMessage = () => {
@@ -37,8 +35,12 @@ const Message = () => {
     <div>
       <h2>Leave a message for the couple!</h2>
       <div>
-        <GuestMessage handleChange={handleChange} addMessage={addMessage} message={message}/>
-        <PostMessage postMessage={postMessage} removeMessage={removeMessage}/>
+        <GuestMessage
+          handleChange={handleChange}
+          addMessage={addMessage}
+          message={message}
+        />
+        <PostMessage postMessage={postMessage} removeMessage={removeMessage} />
       </div>
     </div>
   )
