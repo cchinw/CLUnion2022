@@ -192,8 +192,8 @@ const getMessage = async (req, res) => {
 
 const getMessageById = async (req, res) => {
   try {
-    const { id } = req.params
-    const msg = await Message.findById(id)
+    const msg = await Message.findById(req.params.msgId)
+    // return res.status(201).send(msg)
     if (msg) {
       return res.status(200).json({ msg })
     }
@@ -215,7 +215,7 @@ const createMessage = async (req, res) => {
 
 const updateMessage = async (req, res) => {
   try {
-    const msg = await Message.findByIdAndUpdate(req.params.id, req.body, {
+    const msg = await Message.findByIdAndUpdate(req.params.msgId, req.body, {
       new: true
     })
     res.json(msg)
@@ -226,8 +226,7 @@ const updateMessage = async (req, res) => {
 
 const deleteMessage = async (req, res) => {
   try {
-    const { id } = req.params
-    const deleted = await Message.findByIdAndDelete(id)
+    const deleted = await Message.findByIdAndDelete(req.params.msgId)
     if (deleted) {
       return res.status(200).send('Message Deleted')
     }

@@ -32,10 +32,10 @@ router.post('/message', controllers.createMessage)
 
 router.get('/message', controllers.getMessage)
 
-router.get('/message/msgId', controllers.getMessageById)
+router.get('/message/:msgId', controllers.getMessageById)
 
-router.put('/message/msgId', controllers.createMessage)
+router.put('/message/:msgId', controllers.updateMessage)
 
-router.delete('/message/msgId', controllers.createMessage)
+router.delete('/message/:msgId', controllers.deleteMessage)
 
 module.exports = router
