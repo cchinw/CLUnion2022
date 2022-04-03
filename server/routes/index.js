@@ -12,9 +12,9 @@ router.get('/item', controllers.getItem)
 
 router.get('/item/:id', controllers.getItemById)
 
-router.put('/item/', controllers.addToCheckout)
+router.put('/checkout/', controllers.addToCheckout)
 
-router.put('/item/:id', controllers.removeFromCheckout)
+router.put('/checkout/:id', controllers.removeFromCheckout)
 
 router.get('/checkout', controllers.showCheckout)
 

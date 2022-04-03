@@ -113,7 +113,7 @@ const createReceipt = async (req, res) => {
     const registry = await Registry.findById(registryId)
     const receipt = await new Receipt(req.body)
     await Registry.findByIdAndUpdate(registryId, {
-      receipts: [receipt._id]
+      receipts: [...registry.receipts, receipt._id]
     })
     await receipt.save()
     return res.status(201).json(receipt)
@@ -163,16 +163,34 @@ const getItemsByCategoryId = async (req, res) => {
   }
 }
 //This works!!!
+// const createCheckout = async (req, res) => {
+//   try {
+//     const category = await Category.findById(req.params.id)
+//     const registry = await Registry.findById(req.params.regId)
+//     console.log(category, registry)
+//     if (category.items > 0) {
+//       const itemsLeft = registry.itemsLeft
+//       itemsLeft--
+//       category.save()
+//       res.json(category)
+//     } else {
+//       res.json({ msg: 'This gift has already been purchased' })
+//     }
+//   } catch (error) {
+//     return res.status(500).send(error.message)
+//   }
+// }
+
 const createCheckout = async (req, res) => {
   try {
-    const category = await Category.findById(req.params.id)
-    const registry = await Registry.findById(req.params.regId)
-    console.log(category, registry)
-    if (category.items > 0) {
-      const itemsLeft = registry.itemsLeft
-      itemsLeft--
-      category.save()
-      res.json(category)
+    const registryId = req.body.registry
+    const registry = await Registry.findById(registryId)
+    const receipt = await new Receipt(req.body)
+    if (receipt.purchaseStatus) {
+      const bought = registry.itemsLeft
+      bought--
+      receipt.save()
+      res.json(receipt)
     } else {
       res.json({ msg: 'This gift has already been purchased' })
     }
