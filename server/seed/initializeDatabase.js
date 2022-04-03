@@ -1,5 +1,5 @@
 const db = require('../db')
-const { Item, Category, Registry } = require('../models')
+const { Item, Category, Registry, Checkout, Message } = require('../models')
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
@@ -35,6 +35,8 @@ const main = async () => {
   await furnitureCategory.save()
 
   const furnitureRegistry = await new Registry({
+    image:
+      'https://img1.homary.com/filters:format(webp)/mall/file/2021/06/01/9a87fc0d24474048bc18ba46b194f05f.jpg',
     greeting:
       'Your presence, thoughts, well wishes, and prayers for our wedding and marriage is appreciated above all. If you`ll like to give us a gift, we are grateful and appreciate your generosity. Love, C&L',
     title: 'Furniture Registry',
@@ -76,6 +78,8 @@ const main = async () => {
   await HomeDecorCategory.save()
 
   const HomeDecorRegistry = await new Registry({
+    image:
+      'https://i.pinimg.com/564x/43/2a/bc/432abcf00a224af48ad6795fb97de45d.jpg',
     greeting:
       'Your presence, thoughts, well wishes, and prayers for our wedding and marriage is appreciated above all. If you`ll like to give us a gift, we are grateful and appreciate your generosity. Love, C&L',
     title: 'Home Decor Registry',
@@ -115,6 +119,8 @@ const main = async () => {
   await KitchenCategory.save()
 
   const KitchenRegistry = await new Registry({
+    image:
+      'https://www.mydomaine.com/thmb/c13ZBFZ20sxlZy3NJOaDeq3khJI=/712x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/small-white-kitchen-design-ideas-15-house-of-chais-ig-973460c047b74943a8b250d09048032d.png',
     greeting:
       'Your presence, thoughts, well wishes, and prayers for our wedding and marriage is appreciated above all. If you`ll like to give us a gift, we are grateful and appreciate your generosity. Love, C&L',
     title: 'Kitchen Registry',
@@ -122,12 +128,20 @@ const main = async () => {
     category: KitchenCategory._id
   })
   await KitchenRegistry.save()
+
+  const checkout = await new Checkout({})
+  await checkout.save()
+
+  const msg = await new Message({})
+  await msg.save()
 }
 
 const run = async () => {
   await Item.deleteMany()
   await Category.deleteMany()
   await Registry.deleteMany()
+  await Checkout.deleteMany()
+  await Message.deleteMany()
   await main()
   db.close()
 }

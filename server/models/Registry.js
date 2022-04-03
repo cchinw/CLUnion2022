@@ -2,6 +2,7 @@ const { Schema } = require('mongoose')
 
 const Registry = new Schema(
   {
+    image: { type: String, required: true },
     greeting: { type: String, required: true },
     title: { type: String, required: true },
     itemsLeft: { type: Number, required: true },

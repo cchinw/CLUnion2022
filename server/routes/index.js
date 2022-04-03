@@ -2,9 +2,21 @@ const { Router } = require('express')
 const controllers = require('../controllers')
 const router = Router()
 
+// router.get('/', (req, res) => res.send('Welcome to our wedding website!'))
+
 router.get('/registry', controllers.getRegistry)
 
 router.get('/registry/:regid', controllers.getRegistryById)
+
+router.get('/item', controllers.getItem)
+
+router.get('/item/:id', controllers.getItemById)
+
+router.put('/item/', controllers.addToCheckout)
+
+router.put('/item/:id', controllers.removeFromCheckout)
+
+router.get('/checkout', controllers.showCheckout)
 
 router.get('/category/:id', controllers.getCategoryById)
 
@@ -16,10 +28,10 @@ router.get('/receipt/', controllers.getReceipts)
 
 router.get('/receipt/:rId', controllers.getReceiptbyId)
 
-router.get('/item/:id', controllers.getItemById)
+router.post('/message', controllers.createMessage)
 
-router.post('/checkout/:regid', controllers.createCheckout)
+router.put('/message/msgId', controllers.createMessage)
 
-// router.post('/message', controllers.createMessage)
+router.delete('/message/msgId', controllers.createMessage)
 
 module.exports = router
