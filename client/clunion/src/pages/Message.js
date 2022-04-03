@@ -12,82 +12,70 @@ const Message = () => {
   const { msgId } = useParams()
 
   const BASE_URL = 'http://localhost:3001/api'
+  //display all messages ==> getMessage()
   let [allMessage, setAllMessage] = useState([])
-  let [postMessage, setPostMessage] = useState([])
+
+  // let [postMessage, setPostMessage] = useState([])
+
+  //create new message ==> createMessage()
   let [message, setMessage] = useState('')
+  //get message by Id ==> getMessageById
   let [specificMessage, setSpecificMessage] = useState({})
-  let [messageUpdate, setMessageUpdate] = useEffect('')
+  //update message ==> updateMessage()
+  let [messageUpdate, setMessageUpdate] = useEffect([])
+  //delete message ==> deletemessage
   let [messageDelete, setMessageDelete] = useState({})
-  // let [selected, setSelected] = useState(false)
+  let [selected, setSelected] = useState(false)
 
   useEffect(() => {
-    if (message) {
-      let addNewMessage = () => {
-        const data = {
-          msg: ''
-        }
-        let createMessage = async () => {
-          await axios
-            .post(`${BASE_URL}/message`, data)
-            .then(function (response) {
-              console.log(response, 'POST MESSAGE')
-              setMessage(response.data)
-            })
-            .catch(function (error) {
-              console.log(error)
-            })
-        }
-        createMessage()
-        navigate(location.pathname)
-        return () => {
-          message = [...allMessage, message]
-        }
-      }
-    }
-    if (allMessage) {
+    if (!selected) {
       let getMessage = async () => {
         let response = await axios.get(`${BASE_URL}/message`)
         console.log(response, 'GET ALL MESSAGES')
         setAllMessage(response.data)
-        navigate(location.pathname)
       }
       getMessage()
       return () => {
         allMessage = [...allMessage]
       }
-    }
-    if (specificMessage) {
+    } else if (selected) {
+      let createMessage = async () => {
+        await axios.post(`${BASE_URL}/message`).then(function (response) {
+          console.log(response, 'POST MESSAGE')
+          setMessage(response.data)
+        })
+      }
+      createMessage()
+      return () => {
+        message = [...allMessage, message]
+      }
+    } else if (selected && specificMessage) {
       let getMessageById = async () => {
         let response = await axios.get(`${BASE_URL}/message/${msgId}`)
         console.log(response, 'GET SPECIFIC MESSAGES')
         setSpecificMessage(response.data)
-        navigate(location.pathname)
       }
       getMessageById()
       return () => {
-        getMessageById = [getMessageById]
+        specificMessage = [specificMessage]
       }
-    }
-    if (messageUpdate) {
+    } else if (selected && messageUpdate) {
       let updateMessage = async () => {
         let response = await axios
           .put(`${BASE_URL}/message/${msgId}`)
           .then(function (response) {
             console.log(response, 'UPDATE MESSAGE')
-            setMessage(response.data)
+            setMessageUpdate(response.data)
           })
           .catch(function (error) {
             console.log(error)
           })
-        setMessageUpdate(response.data)
-        navigate(location.pathname)
       }
       updateMessage()
       return () => {
         updateMessage = [...allMessage, updateMessage]
       }
-    }
-    if (messageDelete) {
+    } else if (selected && messageDelete) {
       let deleteMessage = async () => {
         let response = await axios
           .delete(`${BASE_URL}/message/${msgId}`)
@@ -99,7 +87,6 @@ const Message = () => {
             console.log(error)
           })
         setMessageDelete(response.data)
-        navigate(location.pathname)
       }
       deleteMessage()
       return () => {
@@ -108,52 +95,34 @@ const Message = () => {
     }
   }, [])
 
-  const handleChange = (e) => {
-    e.preventDefault()
-    setMessage(e.target.value)
-  }
-
-  // const addMessage = () => {
-  //   let myMessage = [...postMessage, message]
-  //   setPostMessage(myMessage)
-  //   setMessage('')
-  // }
-
-  // const removeMessage = (message) => {
-  //   let addedMessage = [...postMessage]
-  //   addedMessage.splice(message, 1)
-  //   setPostMessage(addedMessage)
-  // }
-
-  // const displayMessage = () => {
-  //   const data = {
-  //     message: message
-  //   }
-  // }
-
   return (
     <div>
       <h2>Leave a message for the couple!</h2>
-      <div>
-        <GuestMessage
-          handleChange={handleChange}
-          allMessage={allMessage}
-          setAllMessage={setAllMessage}
-          message={message}
-          setMessage={setMessage}
-          specificMessage={specificMessage}
-          setSpecificMessage={setSpecificMessage}
-          messageupdate={messageUpdate}
-          setMessageUpdate={setMessageUpdate}
-          messageDelete={messageDelete}
-          setMessageDelete={setMessageDelete}
-        />
-        <PostMessage
-          postMessage={postMessage}
-          setPostMessage={setPostMessage}
-          messageDelete={messageDelete}
-          setMessageDelete={setMessageDelete}
-        />
+      <div className="msgContainer">
+        {allMessage.map((msg) => (
+          <Link to={`/message/${msg.msg}`} key={msg._id}>
+            <div className="guestMsg">
+              <GuestMessage
+                allMessage={allMessage}
+                setAllMessage={setAllMessage}
+                message={message}
+                setMessage={setMessage}
+                specificMessage={specificMessage}
+                setSpecificMessage={setSpecificMessage}
+              />
+            </div>
+          </Link>
+        ))}
+        <div className="msgDisplay">
+          <PostMessage
+            allMessage={allMessage}
+            setAllMessage={setAllMessage}
+            messageupdate={messageUpdate}
+            setMessageUpdate={setMessageUpdate}
+            messageDelete={messageDelete}
+            setMessageDelete={setMessageDelete}
+          />
+        </div>
       </div>
     </div>
   )
