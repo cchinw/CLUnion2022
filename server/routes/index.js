@@ -30,6 +30,10 @@ router.get('/receipt/:rId', controllers.getReceiptbyId)
 
 router.post('/message', controllers.createMessage)
 
+router.get('/message', controllers.getMessage)
+
+router.get('/message/msgId', controllers.getMessageById)
+
 router.put('/message/msgId', controllers.createMessage)
 
 router.delete('/message/msgId', controllers.createMessage)

@@ -132,7 +132,9 @@ const main = async () => {
   const checkout = await new Checkout({})
   await checkout.save()
 
-  const msg = await new Message({})
+  const msg = await new Message({
+    message: ''
+  })
   await msg.save()
 }
 

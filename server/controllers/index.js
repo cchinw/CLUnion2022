@@ -181,6 +181,28 @@ const createCheckout = async (req, res) => {
   }
 }
 
+const getMessage = async (req, res) => {
+  try {
+    const msg = await Message.find()
+    return res.status(200).json({ msg })
+  } catch (error) {
+    return res.status(500).send(error.message)
+  }
+}
+
+const getMessageById = async (req, res) => {
+  try {
+    const { id } = req.params
+    const msg = await Message.findById(id)
+    if (msg) {
+      return res.status(200).json({ msg })
+    }
+    return res.status(404).send('This Message Does Not Exist!')
+  } catch (error) {
+    return res.status(500).send(error.message)
+  }
+}
+
 const createMessage = async (req, res) => {
   try {
     const msg = await new Message(req.body)
@@ -230,6 +252,8 @@ module.exports = {
   getItemsByCategoryId,
   createCheckout,
   preventPurchase,
+  getMessage,
+  getMessageById,
   createMessage,
   updateMessage,
   deleteMessage
