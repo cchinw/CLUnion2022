@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { useNavigate, useLocation, useParams } from 'react-router-dom'
+import { useNavigate, useLocation, useParams, Link } from 'react-router-dom'
 import PostMessage from '../components/PostMessage'
 import GuestMessage from '../components/GuestMessage'
 import '../style/App.css'
@@ -20,9 +20,9 @@ const Message = () => {
   //create new message ==> createMessage()
   let [message, setMessage] = useState('')
   //get message by Id ==> getMessageById
-  let [specificMessage, setSpecificMessage] = useState({})
+  let [specificMessage, setSpecificMessage] = useState('')
   //update message ==> updateMessage()
-  let [messageUpdate, setMessageUpdate] = useEffect([])
+  const [messageUpdate, setMessageUpdate] = useState('')
   //delete message ==> deletemessage
   let [messageDelete, setMessageDelete] = useState({})
   let [selected, setSelected] = useState(false)
@@ -40,10 +40,12 @@ const Message = () => {
       }
     } else if (selected) {
       let createMessage = async () => {
-        await axios.post(`${BASE_URL}/message`).then(function (response) {
-          console.log(response, 'POST MESSAGE')
-          setMessage(response.data)
-        })
+        let response = await axios
+          .post(`${BASE_URL}/message`)
+          .then(function (res) {
+            console.log(response, 'POST MESSAGE')
+            setMessage(response.data)
+          })
       }
       createMessage()
       return () => {
@@ -63,7 +65,7 @@ const Message = () => {
       let updateMessage = async () => {
         let response = await axios
           .put(`${BASE_URL}/message/${msgId}`)
-          .then(function (response) {
+          .then(function () {
             console.log(response, 'UPDATE MESSAGE')
             setMessageUpdate(response.data)
           })
@@ -79,9 +81,9 @@ const Message = () => {
       let deleteMessage = async () => {
         let response = await axios
           .delete(`${BASE_URL}/message/${msgId}`)
-          .then(function (response) {
+          .then(function (res) {
             console.log(response, 'DELETE MESSAGE')
-            setMessage(response.data)
+            setMessage(res.data)
           })
           .catch(function (error) {
             console.log(error)
@@ -92,35 +94,91 @@ const Message = () => {
       return () => {
         deleteMessage = ['Message Deleted']
       }
+    } else {
+      return (selected = true)
     }
   }, [])
+
+  const handleChange = (e) => {
+    e.preventDefault()
+    setMessage(e.target.value)
+  }
+
+  const addMessage = () => {
+    let myMessage = [...allMessage, message]
+    setAllMessage(myMessage)
+    setMessage('')
+  }
+
+  const removeMessage = (msg) => {
+    let addedMessage = [...allMessage]
+    addedMessage.splice(message, 1)
+    setAllMessage(addedMessage)
+  }
+
+  const updateMessage = () => {
+    let newMessage = ''
+    specificMessage.forEach(function (specific, i) {
+      if (specific === specificMessage) specificMessage[i] = newMessage
+    })
+  }
+
+  const showAllMessages = () => {
+    let allMessages = [...allMessage]
+    return allMessages
+  }
+
+  const showOneMessage = () => {
+    return specificMessage
+  }
 
   return (
     <div>
       <h2>Leave a message for the couple!</h2>
       <div className="msgContainer">
-        {allMessage.map((msg) => (
-          <Link to={`/message/${msg.msg}`} key={msg._id}>
-            <div className="guestMsg">
-              <GuestMessage
-                allMessage={allMessage}
-                setAllMessage={setAllMessage}
-                message={message}
-                setMessage={setMessage}
-                specificMessage={specificMessage}
-                setSpecificMessage={setSpecificMessage}
-              />
-            </div>
-          </Link>
-        ))}
+        {/* <div>
+          <label>Leave a message</label>
+          <form className="msgForm" onSubmit={setAllMessage}>
+            <textarea
+              className="msgText"
+              type="text"
+              name="message"
+              placeholder="Enter your message here..."
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+            ></textarea>
+            <button className="addMsgBtn" onChange={setMessage}>
+              Send Message
+            </button>
+          </form>
+          <div>{setAllMessage}</div>
+        </div> */}
         <div className="msgDisplay">
+          <GuestMessage
+            handleChange={handleChange}
+            addMessage={addMessage}
+            message={message}
+
+            // allMessage={allMessage}
+            // setAllMessage={setAllMessage}
+            // message={message}
+            // setMessage={setMessage}
+            // specificMessage={specificMessage}
+            // setSpecificMessage={setSpecificMessage}
+          />
           <PostMessage
             allMessage={allMessage}
-            setAllMessage={setAllMessage}
-            messageupdate={messageUpdate}
-            setMessageUpdate={setMessageUpdate}
-            messageDelete={messageDelete}
-            setMessageDelete={setMessageDelete}
+            showAllMessages={showAllMessages}
+            showOneMessage={showOneMessage}
+            removeMessage={removeMessage}
+            updateMessage={updateMessage}
+
+            // allMessage={allMessage}
+            // setAllMessage={setAllMessage}
+            // messageupdate={messageUpdate}
+            // setMessageUpdate={setMessageUpdate}
+            // messageDelete={messageDelete}
+            // setMessageDelete={setMessageDelete}
           />
         </div>
       </div>
