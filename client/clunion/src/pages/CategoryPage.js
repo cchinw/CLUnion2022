@@ -14,25 +14,13 @@ const CategoryPage = () => {
   const [items, setItems] = useState([])
 
   useEffect(() => {
-    if (!selected) {
-      const getCategory = async () => {
-        const response = await axios.get(`${BASE_URL}/registry`)
-        console.log(response, 'CATEGORY THAT WORKS')
-        setCategory(response.data)
-        console.log(response.data)
-      }
-      getCategory()
-    } else if (selected) {
-      const getReceipt = async () => {
-        const response = await axios.get(`${BASE_URL}/receipts/:rId`)
-        setReceipt(response)
-      }
-      getReceipt()
-      // } else {
-      //   return () => {
-      //     selected = true
-      //   }
+    const getCategory = async () => {
+      const response = await axios.get(`${BASE_URL}/registry`)
+      console.log(response, 'CATEGORY THAT WORKS')
+      setCategory(response.data)
+      console.log(response.data)
     }
+    getCategory()
   }, [])
 
   return (
