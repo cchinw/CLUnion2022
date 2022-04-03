@@ -28,10 +28,10 @@ const CategoryPage = () => {
         setReceipt(response)
       }
       getReceipt()
-    } else {
-      return () => {
-        selected = true
-      }
+      // } else {
+      //   return () => {
+      //     selected = true
+      //   }
     }
   }, [])
 
