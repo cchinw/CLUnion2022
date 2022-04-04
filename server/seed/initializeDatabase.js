@@ -132,7 +132,11 @@ const main = async () => {
   const checkout = await new Checkout({})
   await checkout.save()
 
-  const msg = await new Message([])
+  const msg = await new Message({
+    image:
+      'https://scontent-iad3-1.xx.fbcdn.net/v/t39.30808-6/277659964_10227524588638258_2009064567405745035_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=730e14&_nc_ohc=mk0-tPsjIOAAX-W35k0&_nc_ht=scontent-iad3-1.xx&oh=00_AT_i1h-FHd1hVcweXLoT21RuXM3Pl0x-Dz7acBRavkgRkw&oe=624DDB50',
+    msg: 'I wish you all the joy and happiness - Nini'
+  })
   await msg.save()
 }
 
