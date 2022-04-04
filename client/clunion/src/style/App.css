@@ -1,0 +1,249 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 50px 15px 50px;
+  background-image: linear-gradient(to right, #a0b5eb, #c9f0e4);
+  color: #fff;
+}
+
+.navigationLinks a {
+  color: #4799e9;
+  font-weight: bold;
+}
+.logo {
+  font-size: 32px;
+  font-family: 'Sacramento', cursive;
+}
+.nav-menu {
+  display: flex;
+  gap: 1em;
+  font-size: 18px;
+}
+.nav-menu li a:hover {
+  color: #fff;
+}
+.nav-menu li {
+  padding: 5px 14px;
+}
+
+input[type='checkbox'] {
+  display: none;
+}
+
+.hamburger {
+  display: none;
+  font-size: 24px;
+  user-select: none;
+}
+
+.homeImage {
+  margin-top: 20px;
+  height: 80vh;
+  background: url('HomeImage.jpg');
+  background-size: cover;
+}
+
+.homeHeader {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  text-align: center;
+  color: #4799e9;
+}
+
+.faqheader {
+  text-align: center;
+  margin: 0 0 30px 0;
+}
+
+.faq-pretext {
+  margin-bottom: 30px;
+}
+
+.faqtext {
+  padding: 50px;
+}
+
+.faqtext p {
+  margin-bottom: 20px;
+}
+
+.faqtext p span {
+  font-weight: bold;
+}
+
+.guestMessage {
+  margin-bottom: 20%;
+  padding: 50px;
+}
+
+.msgForm {
+  margin-top: 40px;
+  padding-left: 40px;
+  background: white;
+  border-radius: 30px;
+  padding: 70px 50px 70px 50px;
+  box-shadow: 12px 12px 22px grey;
+  display: block;
+}
+
+.uploadImage {
+  width: 100%;
+  display: block;
+  margin-bottom: 30px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.messageText {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.addMessageBtn {
+  font-family: 'lora', serif;
+  background: linear-gradient(to right, #a0b5eb, #c9f0e4);
+  color: #4799e9 !important;
+  font-weight: bold;
+  width: 50%;
+  padding: 1.8vh;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn {
+  text-align: center;
+}
+
+.postMessage {
+  display: flex;
+  margin-top: 80px;
+  margin-left: 50px;
+  box-shadow: 2px 2px 4px 2px grey;
+  border: 1px solid grey;
+  border-radius: 5px;
+  margin-bottom: 30px;
+  width: 90%;
+}
+
+.updateDeleteDiv {
+  margin-top: 30px;
+  padding: 50px;
+}
+
+.updateMsgContainer {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.updateBtn {
+  font-family: 'lora', serif;
+  background: linear-gradient(to right, #a0b5eb, #c9f0e4);
+  color: #4799e9 !important;
+  font-weight: bold;
+  width: 50%;
+  padding: 1.8vh;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.msgImage {
+  width: 500px;
+  height: 500px;
+}
+
+.categoryImg {
+  width: 100%;
+  border-radius: 12px;
+  height: 214px;
+  object-fit: cover;
+}
+
+#container {
+  max-width: 300px;
+  margin-top: 10vh;
+}
+
+.card {
+  background-color: white;
+  border: 1px solid #bacdd8;
+  padding: 8px;
+  border-radius: 12px;
+}
+
+.categoryBtn {
+  font-family: 'lora', serif;
+  background: linear-gradient(to right, #a0b5eb, #c9f0e4);
+  color: #4799e9 !important;
+  font-weight: bold;
+  width: 100%;
+  padding: 1.2vh;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+}
+
+.cardInfo {
+  padding: 16px 8px 8px 8px;
+}
+.cardBtn {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  margin-top: 16px;
+  text-align: center;
+}
+
+.column {
+  float: left;
+  width: 25%;
+  padding: 0 25px;
+  margin-left: 65px;
+  margin-top: 60px;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 15px;
+  }
+  .nav-menu {
+    display: none;
+    position: absolute;
+    background-image: linear-gradient(to right, #a0b5eb, #c9f0e4);
+    right: 0;
+    left: 0;
+    text-align: center;
+    padding: 16px 0;
+  }
+  .logo {
+    font-size: 15px;
+  }
+  .nav-menu li + li {
+    margin-top: 20px;
+  }
+  input[type='checkbox']:checked ~ .nav-menu {
+    display: block;
+  }
+  .hamburger {
+    display: block;
+  }
+}
