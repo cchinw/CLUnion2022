@@ -51,18 +51,6 @@ const Receipt = ({checkout, item, category}) => {
   getItemDetails()
   console.log(data, 'ITEM DETAILS')
 
-
-  // const receipt = {
-  //   items: [...checkout],
-  //   totalCost: data.reduce((total, items) => total += items.price * items.quantityNeeded, 0),
-  //   date: Date,
-  //   purchaseStatus: true,
-  //   registry: category
-  // }
-
-
-
-
   return (
     <div>
       <h1>Thank you for your purchase!</h1>

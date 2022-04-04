@@ -7,7 +7,6 @@ import { useState, useEffect } from 'react'
 const GuestMessage = ({msg, getMessage}) => {
 
   const BASE_URL = 'http://localhost:3001/api'
-    //create new message ==> createMessage()
     const [message, setMessage] = useState('')
     const [imageLink, setImageLink] = useState('')
 

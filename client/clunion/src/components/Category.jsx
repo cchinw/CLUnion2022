@@ -49,15 +49,6 @@ const Category = ({item}) => {
       return [...items]
     })
   }
-  
-  // useEffect(() => {
-  //   const checkoutItems = async () => {
-  //     const response = await axios.post(`http://localhost:3001/api//checkout/${regId}`)
-  //     setCheckout(response.data)
-  //     setSelectedItem(true)
-  //   }
-  //   checkoutItems()
-  // } ,[])
 
 
  const checkoutCondition = () => {
