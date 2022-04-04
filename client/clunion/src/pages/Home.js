@@ -1,14 +1,13 @@
 import React from 'react'
 import '../style/App.css'
-import HomeImage from '../highlights/HomeImage.jpg'
 // import DateCountdown from 'react-date-countdown-timer'
 
 const Home = () => {
   return (
     <div className="home">
       <div>
-        <h1>Welcome to Our Wedding Website</h1>
-        <img className="homeImage" src={HomeImage} alt="mainCoupleImage" />
+        <h1 className="homeHeader">Welcome to Our Wedding Website</h1>
+        <div className="homeImage"></div>
         <h4 className="countdown">
           {/* <DateCountdown
               dateTo="December 16, 2022 00:00:00 GMT+01:00"

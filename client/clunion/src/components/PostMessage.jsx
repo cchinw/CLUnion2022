@@ -25,6 +25,7 @@ const PostMessage = ({msg, setAllMessage, getMessage}) => {
       .delete(`${BASE_URL}/message/${msgId}`)
       .then(function (res) {
         console.log(res, 'DELETE MESSAGE')
+        getMessage()
       })
       .catch(function (error) {
         console.log(error)
@@ -57,26 +58,36 @@ const PostMessage = ({msg, setAllMessage, getMessage}) => {
     setMessage(e.target.value)
   }
 
+  const handleImageChange = (e) => {
+    const newImage = e.target.value
+    setImageLink(newImage)
+  } 
+
   return (
     <div>
-              <img src={msg.image} />
+              <img className="msgImage" src={msg.image} />
               <h3>{msg.msg}</h3>
-              <button
+              <div className="updateMsgContainer">
+                <div className="updateMsg">
+                <input className='uploadImage' placeholder='Paste New Image Link' onChange={handleImageChange} value={imageLink} ></input>
+                <textarea placeholder="Edit your message here..." type='text' onChange={handleChange} value={message}></textarea>
+                </div>
+                <div className="updateBtn">
+                  <button
+                  onClick={() => {
+                    updateMessage(msg._id)
+                  }}
+                  >
+                    Update Message
+                  </button>
+                  <button
                 onClick={() => {
                   deleteMessage(msg._id)
                 }}
               >
                 Delete Message
               </button>
-              <div>
-                <input onChange={handleChange} value={message}></input>
-                <button
-                  onClick={() => {
-                    updateMessage(msg._id)
-                  }}
-                >
-                  Update Message
-                </button>
+                </div>
               </div>
             </div>
 

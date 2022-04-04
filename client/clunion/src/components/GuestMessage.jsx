@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 
 
 
-const GuestMessage = ({msg}) => {
+const GuestMessage = ({msg, getMessage}) => {
 
   const BASE_URL = 'http://localhost:3001/api'
     //create new message ==> createMessage()
@@ -28,6 +28,7 @@ const GuestMessage = ({msg}) => {
     .then(function (res) {
       console.log(response, 'POST MESSAGE')
       setMessage(response.data)
+      getMessage()
     })
   }
 
@@ -42,11 +43,10 @@ const GuestMessage = ({msg}) => {
 
   console.log(message)
   return (
-    <div>
-      <label>Leave Message: </label>
+    <div className='msgContainer'>
       <form className='msgForm' >
-          <input onChange={handleImageChange} value={imageLink} ></input>
-          <textarea type='text' name='message' placeholder='Enter your message here...' onChange={handleChange} value={message}></textarea>
+          <input className='uploadImage' placeholder='Paste Image Link' onChange={handleImageChange} value={imageLink} ></input>
+          <textarea className='messageText' type='text' name='message' placeholder='Enter your message here...' onChange={handleChange} value={message}></textarea>
           <button className='addMessageBtn' onClick={onClick}>Send Message</button>
         </form >
     </div>
