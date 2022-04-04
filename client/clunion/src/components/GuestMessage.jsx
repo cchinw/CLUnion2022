@@ -45,12 +45,16 @@ const GuestMessage = ({msg, getMessage}) => {
   return (
     <div className='msgContainer'>
       <form className='msgForm' >
-          <input className='uploadImage' placeholder='Paste Image Link' onChange={handleImageChange} value={imageLink} ></input>
-          <textarea className='messageText' type='text' name='message' placeholder='Enter your message here...' onChange={handleChange} value={message}></textarea>
-          <button className='addMessageBtn' onClick={onClick}>Send Message</button>
+          <input className='uploadImage' placeholder='Paste a link to your image here' onChange={handleImageChange} value={imageLink} id="pasteImage" ></input>
+          <textarea className='messageText' type='text' name='message' rows='10' placeholder='Enter your message here...' onChange={handleChange} value={message}></textarea>
+          <div className='btn'>
+            <button className='addMessageBtn' onClick={onClick}>Send Message</button>
+          </div>
         </form >
     </div>
   )
 }
+
+
 
 export default GuestMessage

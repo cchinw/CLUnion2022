@@ -64,29 +64,37 @@ const PostMessage = ({msg, setAllMessage, getMessage}) => {
   } 
 
   return (
-    <div>
-              <img className="msgImage" src={msg.image} />
-              <h3>{msg.msg}</h3>
-              <div className="updateMsgContainer">
+    <div className="postMessage">
+      <div className="msgImgDiv">
+        <img className="msgImage" src={msg.image} />
+      </div>
+
+      <div className="updateDeleteDiv">
+      <h3>{msg.msg}</h3>
+      <div className="updateMsgContainer">
                 <div className="updateMsg">
                 <input className='uploadImage' placeholder='Paste New Image Link' onChange={handleImageChange} value={imageLink} ></input>
-                <textarea placeholder="Edit your message here..." type='text' onChange={handleChange} value={message}></textarea>
+                {/* <input className='uploadImage' placeholder='Paste New Image Link' onChange={handleImageChange} type= 'file' accept="image/jpeg, image/png" value={imageLink}></input> */}
+                <textarea rows='10' className="messageText" placeholder="Edit your message here..." type='text' onChange={handleChange} value={message}></textarea>
                 </div>
-                <div className="updateBtn">
-                  <button
+                <div className="updateBtnDiv">
+                  <button  className="updateBtn"
                   onClick={() => {
                     updateMessage(msg._id)
                   }}
                   >
                     Update Message
                   </button>
-                  <button
+      </div>
+      <div>
+      <button className="updateBtn"
                 onClick={() => {
                   deleteMessage(msg._id)
                 }}
               >
                 Delete Message
               </button>
+      </div>
                 </div>
               </div>
             </div>

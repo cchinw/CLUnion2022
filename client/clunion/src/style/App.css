@@ -83,7 +83,89 @@ input[type='checkbox'] {
   font-weight: bold;
 }
 
-/* .categoryImg {
+.guestMessage {
+  margin-bottom: 20%;
+  padding: 50px;
+}
+
+.msgForm {
+  margin-top: 40px;
+  padding-left: 40px;
+  background: white;
+  border-radius: 30px;
+  padding: 70px 50px 70px 50px;
+  box-shadow: 12px 12px 22px grey;
+  display: block;
+}
+
+.uploadImage {
+  width: 100%;
+  display: block;
+  margin-bottom: 30px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.messageText {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.addMessageBtn {
+  font-family: 'lora', serif;
+  background: linear-gradient(to right, #a0b5eb, #c9f0e4);
+  color: #4799e9 !important;
+  font-weight: bold;
+  width: 50%;
+  padding: 1.8vh;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn {
+  text-align: center;
+}
+
+.postMessage {
+  display: flex;
+  margin-top: 80px;
+  margin-left: 50px;
+  box-shadow: 2px 2px 4px 2px grey;
+  border: 1px solid grey;
+  border-radius: 5px;
+  margin-bottom: 30px;
+  width: 90%;
+}
+
+.updateDeleteDiv {
+  margin-top: 30px;
+  padding: 50px;
+}
+
+.updateMsgContainer {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.updateBtn {
+  font-family: 'lora', serif;
+  background: linear-gradient(to right, #a0b5eb, #c9f0e4);
+  color: #4799e9 !important;
+  font-weight: bold;
+  width: 50%;
+  padding: 1.8vh;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.categoryImg {
   width: 100%;
   border-radius: 12px;
   height: 214px;
@@ -129,9 +211,6 @@ p {
   margin-top: 60px;
 }
 
-
-
-
 .categoryImg {
   width: 100%;
   border-radius: 12px;
@@ -143,18 +222,18 @@ p {
   max-width: 300px;
 
   /* Add empty space above the container (20% of the view height) */
-/* margin-top: 10vh;
+  margin-top: 10vh;
 }
 
 .card {
   /* Change background color */
-/* background-color: white; */
+  background-color: white;
 
-/* Add border */
-/* border: 1px solid #bacdd8; */
+  /* Add border */
+  border: 1px solid #bacdd8;
 
-/* Add space between the border and the content */
-/* padding: 8px;
+  /* Add space between the border and the content */
+  padding: 8px;
 
   border-radius: 12px;
 }
@@ -163,33 +242,33 @@ p {
   font-size: 14px;
   color: #7f8c9b;
   line-height: 150%;
-} */
+}
 
 /* Style button element */
-/* button {
+button {
   border: none;
   padding: 12px 24px;
   border-radius: 50px;
 
   font-weight: 600;
   color: #0077ff;
-  background-color: #e0efff; */
+  background-color: #e0efff;
 
-/* Button is inline-block element by default, it need to have block display for margin: 0 auto; to work */
-/* margin: 0 auto;
-  display: block; */
+  /* Button is inline-block element by default, it need to have block display for margin: 0 auto; to work */
+  margin: 0 auto;
+  display: block;
 
-/* Button is a clickable element, therefore it should have a pointer cursor
+  /* Button is a clickable element, therefore it should have a pointer cursor
   cursor: pointer;
 }
 
 .card__details { 
 /* Add space around the details */
-/* padding: 16px 8px 8px 8px;
-} */
+  padding: 16px 8px 8px 8px;
+}
 
 /* Container that holds message input div */
-/* .msgContainer {
+.msgContainer {
 }
 
 .msgForm {
@@ -225,7 +304,7 @@ p {
 
 .msgList {
   margin: 5px;
-} */
+}
 
 @media (max-width: 768px) {
   .navbar {

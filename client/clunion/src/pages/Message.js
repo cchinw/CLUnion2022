@@ -29,10 +29,13 @@ const Message = () => {
 
   return (
     <div>
-      <h2>Leave a message for the couple!</h2>
+      <h2 className="faqheader">Leave a message for the couple!</h2>
       <div className="msgContainer">
         <div>
           <div className="msgDisplay">
+            <div className="guestMessage">
+              <GuestMessage msg={allMessage} getMessage={getMessage} />
+            </div>
             {allMessage.map((msg) => (
               <div className="postMessage">
                 <PostMessage
@@ -42,9 +45,6 @@ const Message = () => {
                 />
               </div>
             ))}
-            <div className="guestMessage">
-              <GuestMessage msg={allMessage} getMessage={getMessage} />
-            </div>
           </div>
         </div>
       </div>
