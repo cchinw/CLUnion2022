@@ -24,27 +24,33 @@ const CategoryPage = () => {
   }, [])
 
   return (
-    <div className="container">
-      {category.map((cat) => (
-        <Link to={`/registry/${cat.category}`} key={cat._id}>
-          <div className="card">
-            <img className="categoryImg" src={cat.image} />
-            <button className="categoryBtn">{cat.title}</button>
-          </div>
-        </Link>
-      ))}
-      <Category
-        receipt={receipt}
-        setReceipt={setReceipt}
-        selected={selected}
-        setSelected={setSelected}
-        checkout={checkout}
-        setCheckout={setCheckout}
-        items={items}
-        setItems={setItems}
-        category={category}
-        setCategory={setCategory}
-      />
+    <div className="column">
+      <div className="container">
+        {category.map((cat) => (
+          <Link to={`/registry/${cat.category}`} key={cat._id}>
+            <div className="card">
+              <img className="categoryImg" src={cat.image} />
+              <div className="cardInfo">
+                <div className="cardBtn">
+                  <button className="categoryBtn">{cat.title}</button>
+                </div>
+              </div>
+            </div>
+          </Link>
+        ))}
+        <Category
+          receipt={receipt}
+          setReceipt={setReceipt}
+          selected={selected}
+          setSelected={setSelected}
+          checkout={checkout}
+          setCheckout={setCheckout}
+          items={items}
+          setItems={setItems}
+          category={category}
+          setCategory={setCategory}
+        />
+      </div>
     </div>
   )
 }
