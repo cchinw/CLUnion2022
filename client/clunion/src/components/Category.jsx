@@ -82,6 +82,7 @@ const Category = ({item}) => {
         {categoryItems.map((items) => (
             <Item
             items={items}
+            buyNow={items.link}
             addToCheckout={addToCheckout}
             removeFromCheckout={removeFromCheckout}
             checkoutCondition={checkoutCondition}

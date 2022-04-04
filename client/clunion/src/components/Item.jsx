@@ -1,7 +1,7 @@
 import '../style/App.css'
 import React from 'react'
 
-const Item = ({ items, checkoutCondition, addToCheckout, removeFromCheckout}) => {
+const Item = ({ items, buyNow, checkoutCondition, addToCheckout, removeFromCheckout}) => {
 
     
   return (
@@ -12,8 +12,7 @@ const Item = ({ items, checkoutCondition, addToCheckout, removeFromCheckout}) =>
         <h5>{items.description}</h5>
         <h5 className='name'>{items.price}</h5>
         <h6>{items.quantityNeeded}</h6>
-        <button onClick={addToCheckout} onChange={items.checkoutCondition}>Add to Cart</button>
-        <button onClick={removeFromCheckout} onChange={items.checkoutCondition}>Remove from Cart</button>
+        <button onClick={buyNow} onChange={items.checkoutCondition}>Buy Here</button>
       </div>
     </div>
   )
