@@ -1,4 +1,4 @@
-# CLUnion2022 - Building My MERN Wedding Website
+# CLUnion2022 - Building My MERN Wedding Website - Guest Signout Book
 
 ### By Chinwendu Ukoha
 
